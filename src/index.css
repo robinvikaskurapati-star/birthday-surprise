@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    background-color: #fff9fa;
+    color: #4a3540;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom romantic scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fff5f7;
+}
+::-webkit-scrollbar-thumb {
+  background: #fbaac0;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f6759c;
+}
+
+/* Glassmorphism romantic cards */
+.romantic-glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(254, 205, 214, 0.6);
+  box-shadow: 0 10px 30px -10px rgba(244, 63, 104, 0.12);
+}
+
+.romantic-glass-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.romantic-glass-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(244, 63, 104, 0.2);
+  border-color: rgba(244, 63, 104, 0.5);
+}
+
+/* Scrapbook tape decoration */
+.washi-tape {
+  position: absolute;
+  height: 22px;
+  width: 90px;
+  background-color: rgba(254, 210, 220, 0.75);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-left: 2px dashed rgba(244, 63, 104, 0.2);
+  border-right: 2px dashed rgba(244, 63, 104, 0.2);
+  z-index: 20;
+}
+
+/* Soft glowing text */
+.glow-text {
+  text-shadow: 0 0 20px rgba(244, 63, 104, 0.4);
+}
+
+/* Candle flame animations */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    opacity: 0.95;
+    box-shadow: 0 -4px 14px 4px rgba(255, 170, 0, 0.6);
+  }
+  30% {
+    transform: scale(1.08, 0.92) rotate(2deg);
+    opacity: 1;
+    box-shadow: 0 -6px 18px 5px rgba(255, 200, 0, 0.8);
+  }
+  60% {
+    transform: scale(0.94, 1.06) rotate(-2deg);
+    opacity: 0.9;
+    box-shadow: 0 -3px 12px 3px rgba(255, 150, 0, 0.5);
+  }
+  80% {
+    transform: scale(1.04, 0.96) rotate(1deg);
+    opacity: 0.98;
+    box-shadow: 0 -5px 16px 4px rgba(255, 180, 0, 0.7);
+  }
+}
+
+.candle-flame {
+  animation: flameFlicker 1.2s infinite ease-in-out alternate;
+  transform-origin: bottom center;
+}
+
+/* Smoke puff when candles blown out */
+@keyframes smokeRise {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-40px) scale(2.2);
+    opacity: 0;
+  }
+}
+
+.smoke-puff {
+  animation: smokeRise 1.5s forwards ease-out;
+}
