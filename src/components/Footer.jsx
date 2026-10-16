@@ -1,8 +1,8 @@
 import React from 'react';
-import { Heart, Sparkles } from 'lucide-react';
+import { Heart, Sparkles, Lock } from 'lucide-react';
 import { personalization } from '../data/personalization';
 
-export default function Footer() {
+export default function Footer({ onLock }) {
   return (
     <footer className="py-12 px-4 bg-[#fff0f4] border-t border-pink-200/60 text-center relative z-20">
       <div className="max-w-md mx-auto flex flex-col items-center gap-3">
@@ -22,8 +22,17 @@ export default function Footer() {
           Happy Birthday, my favorite human in the entire universe. 🎂✨
         </p>
 
-        <div className="mt-4 text-[11px] text-pink-400/80 font-mono">
-          Forever & Always • {new Date().getFullYear()}
+        <div className="mt-4 flex items-center justify-center gap-4 text-[11px] text-pink-400/80 font-mono">
+          <span>Forever & Always • {new Date().getFullYear()}</span>
+          {onLock && (
+            <button
+              onClick={onLock}
+              className="text-pink-500 hover:text-pink-700 underline flex items-center gap-1 cursor-pointer"
+              title="Lock website"
+            >
+              <Lock className="w-3 h-3" /> Lock
+            </button>
+          )}
         </div>
       </div>
     </footer>

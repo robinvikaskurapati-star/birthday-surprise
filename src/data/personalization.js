@@ -21,6 +21,19 @@
 
 export const personalization = {
   // ------------------------------------------------------------------
+  // 0. PRIVACY & PASSCODE PROTECTION 🔐
+  // ------------------------------------------------------------------
+  security: {
+    enabled: true,                   // Set to false if you want the website open without a lock
+    passcode: 'love',                // Secret password to unlock (case-insensitive, e.g. her birthdate or 'love')
+    hint: 'Hint: The sweet 4-letter word that brought us together 💖',
+    magicKey: 'surprise',            // Secret key for your magic private link!
+                                     // Sharing your URL with `?key=surprise` opens the site instantly!
+    lockedTitle: 'A Secret Birthday Surprise 🔐💖',
+    lockedSubtitle: 'This private love letter is locked just for Robin\'s favorite person.',
+  },
+
+  // ------------------------------------------------------------------
   // 1. NAMES & GENERAL DETAILS
   // ------------------------------------------------------------------
   recipient: {
