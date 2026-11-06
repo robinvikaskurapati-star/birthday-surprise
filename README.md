@@ -176,6 +176,6 @@ The repository is configured for automatic deployment via **GitHub Actions** (`.
    ```
 3. GitHub Actions will automatically build and deploy the website.
 4. Your live website will be accessible at:
-   **`https://robinvikaskurapati-star.github.io/birthday-surprise/`**
+   **`https://chowhan1008.github.io/birthday-surprise/`**
 
 If GitHub CLI (`gh`) is authenticated, you can also run `./deploy.ps1` to trigger deployment in one click!
