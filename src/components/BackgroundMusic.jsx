@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Volume2, VolumeX, Music, Heart } from 'lucide-react';
 import { personalization } from '../data/personalization';
+import { resolveAsset } from '../utils/assets';
 
 export default function BackgroundMusic() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -110,7 +111,7 @@ export default function BackgroundMusic() {
       {personalization.music?.audioSrc && !useSynth && (
         <audio
           ref={audioRef}
-          src={personalization.music.audioSrc}
+          src={resolveAsset(personalization.music.audioSrc)}
           loop
           onError={() => setUseSynth(true)}
         />

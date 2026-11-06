@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heart, Sparkles, MessageCircle, Smile, Star, Infinity, BookOpen, Camera } from 'lucide-react';
 import { personalization } from '../data/personalization';
+import { resolveAsset } from '../utils/assets';
 
 export default function TimelineSection() {
   const getIcon = (type) => {
@@ -88,7 +89,7 @@ export default function TimelineSection() {
                       {item.photo && (
                         <div className="my-3 w-full h-36 rounded-xl overflow-hidden shadow-inner bg-pink-50 relative">
                           <img
-                            src={item.photo}
+                            src={resolveAsset(item.photo)}
                             alt={item.title}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             onError={(e) => {

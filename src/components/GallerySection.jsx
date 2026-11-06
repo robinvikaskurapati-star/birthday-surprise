@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Camera, X, ChevronLeft, ChevronRight, Heart, Sparkles, Image as ImageIcon, Eye, Award } from 'lucide-react';
 import { personalization } from '../data/personalization';
 import { soundEffects } from '../utils/soundEffects';
+import { resolveAsset } from '../utils/assets';
 
 export default function GallerySection() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
@@ -70,7 +71,8 @@ export default function GallerySection() {
 
   // Render individual photo image with graceful fallback and custom object positioning
   const renderPhotoImg = (item, extraClasses = '') => {
-    const imgSrc = item.image || `/images/memories/memory${item.id}.svg`;
+    const rawSrc = item.image || `images/memories/photo${item.id}.jpeg`;
+    const imgSrc = resolveAsset(rawSrc);
 
     return (
       <img
@@ -80,9 +82,8 @@ export default function GallerySection() {
         style={{ objectPosition: item.objectPosition || 'center' }}
         className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${extraClasses}`}
         onError={(e) => {
-          // Fallback to local SVG placeholder if custom path not found
           e.currentTarget.onerror = null;
-          e.currentTarget.src = `/images/memories/memory${item.id || 1}.svg`;
+          e.currentTarget.src = resolveAsset(`images/memories/photo${item.id || 1}.jpeg`);
         }}
       />
     );
@@ -355,7 +356,7 @@ export default function GallerySection() {
             {/* Photo in Lightbox (Full uncropped view tailored to natural dimensions) */}
             <div className="w-full max-h-[68vh] rounded-2xl overflow-hidden bg-pink-50/50 flex items-center justify-center shadow-inner mb-4 p-1">
               <img
-                src={galleryItems[selectedImageIndex].image || `/images/memories/memory${galleryItems[selectedImageIndex].id}.svg`}
+                src={resolveAsset(galleryItems[selectedImageIndex].image || `images/memories/photo${galleryItems[selectedImageIndex].id}.jpeg`)}
                 alt={galleryItems[selectedImageIndex].title}
                 className="max-h-[64vh] max-w-full w-auto h-auto object-contain mx-auto rounded-xl shadow-sm"
               />
