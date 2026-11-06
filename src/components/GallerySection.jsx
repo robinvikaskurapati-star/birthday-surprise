@@ -68,7 +68,7 @@ export default function GallerySection() {
     }
   }, [isAllDiscovered, allDiscoveredCelebrated]);
 
-  // Render individual photo image with graceful fallback
+  // Render individual photo image with graceful fallback and custom object positioning
   const renderPhotoImg = (item, extraClasses = '') => {
     const imgSrc = item.image || `/images/memories/memory${item.id}.svg`;
 
@@ -77,6 +77,7 @@ export default function GallerySection() {
         src={imgSrc}
         alt={item.title}
         loading="lazy"
+        style={{ objectPosition: item.objectPosition || 'center' }}
         className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${extraClasses}`}
         onError={(e) => {
           // Fallback to local SVG placeholder if custom path not found
@@ -152,7 +153,7 @@ export default function GallerySection() {
 
               <div className="flex flex-col sm:flex-row items-center gap-6">
                 {/* Central Photo */}
-                <div className="w-full sm:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden shadow-inner bg-pink-50 relative">
+                <div className="w-full sm:w-1/2 aspect-[16/10] rounded-2xl overflow-hidden shadow-inner bg-pink-50 relative">
                   {renderPhotoImg(galleryItems[0])}
                   <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-pink-600 shadow-sm flex items-center gap-1">
                     <Sparkles className="w-3 h-3 text-pink-500" />
@@ -351,9 +352,13 @@ export default function GallerySection() {
               </span>
             </div>
 
-            {/* Photo in Lightbox */}
-            <div className="w-full max-h-[60vh] aspect-auto rounded-2xl overflow-hidden bg-pink-50 flex items-center justify-center shadow-inner mb-4">
-              {renderPhotoImg(galleryItems[selectedImageIndex], 'max-h-[60vh] w-auto h-auto object-contain')}
+            {/* Photo in Lightbox (Full uncropped view tailored to natural dimensions) */}
+            <div className="w-full max-h-[68vh] rounded-2xl overflow-hidden bg-pink-50/50 flex items-center justify-center shadow-inner mb-4 p-1">
+              <img
+                src={galleryItems[selectedImageIndex].image || `/images/memories/memory${galleryItems[selectedImageIndex].id}.svg`}
+                alt={galleryItems[selectedImageIndex].title}
+                className="max-h-[64vh] max-w-full w-auto h-auto object-contain mx-auto rounded-xl shadow-sm"
+              />
             </div>
 
             {/* Caption & Title */}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HeartOpeningScreen from './components/HeartOpeningScreen';
 import SurpriseNavBar from './components/SurpriseNavBar';
 import CursorHeartTrail from './components/CursorHeartTrail';
@@ -14,19 +14,61 @@ import LoveLetterSection from './components/LoveLetterSection';
 import LoveQuizSection from './components/LoveQuizSection';
 import FinalSurpriseSection from './components/FinalSurpriseSection';
 import Footer from './components/Footer';
+import LockScreen from './components/LockScreen';
+import { personalization } from './data/personalization';
 
 export default function App() {
-  // State: whether the initial heart has been pulled/opened
+  const security = personalization.security || {};
+  const isSecurityEnabled = security.enabled !== false;
+
+  const [isUnlocked, setIsUnlocked] = useState(!isSecurityEnabled);
   const [isHeartOpened, setIsHeartOpened] = useState(false);
+
+  // Check for private magic link parameter (?key=bngrm or ?key=siri)
+  useEffect(() => {
+    if (!isSecurityEnabled) return;
+
+    try {
+      // 1. Check if previously unlocked in this browser session
+      const stored = localStorage.getItem('birthday_site_unlocked');
+      if (stored === 'true') {
+        setIsUnlocked(true);
+        return;
+      }
+
+      // 2. Check for private magic link query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const keyParam = (urlParams.get('key') || urlParams.get('pass') || '').trim().toLowerCase();
+      const validMagicKeys = [
+        'bngrm',
+        'siri',
+        'seethaa',
+        'love',
+        'surprise',
+        (security.magicKey || 'bngrm').toLowerCase(),
+        (security.passcode || 'siri').toLowerCase(),
+      ];
+
+      if (keyParam && validMagicKeys.includes(keyParam)) {
+        setIsUnlocked(true);
+        localStorage.setItem('birthday_site_unlocked', 'true');
+      }
+    } catch {}
+  }, [isSecurityEnabled, security.magicKey, security.passcode]);
+
+  const handleUnlock = () => {
+    setIsUnlocked(true);
+    try {
+      localStorage.setItem('birthday_site_unlocked', 'true');
+    } catch {}
+  };
 
   const handleHeartOpenComplete = () => {
     setIsHeartOpened(true);
-    // Smooth scroll to top of experience
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleReplay = () => {
-    // Scroll to top and reset heart opening screen
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(() => {
       setIsHeartOpened(false);
@@ -39,6 +81,17 @@ export default function App() {
       memoriesEl.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // If locked, render romantic lock screen
+  if (!isUnlocked) {
+    return (
+      <div className="relative min-h-screen bg-[#fff9fa]">
+        <FloatingHearts />
+        <CursorHeartTrail />
+        <LockScreen onUnlock={handleUnlock} />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#fff9fa] text-gray-800 relative selection:bg-pink-200 selection:text-pink-900">

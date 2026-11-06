@@ -4,14 +4,25 @@
  * ROMANTIC BIRTHDAY SURPRISE - PERSONALIZATION CONFIGURATION
  * ====================================================================
  * 
- * Welcome Robin! This is the ONE central file you need to customize
- * the entire website for Siri Bngrm. Every section pulls its content
- * directly from this file.
+ * Welcome Robin! This is the ONE central file configured with love
+ * for Siri Bngrm (Seethaa).
  * 
  * ====================================================================
  */
 
 export const personalization = {
+  // ------------------------------------------------------------------
+  // 0. PRIVACY & PASSCODE PROTECTION 🔐
+  // ------------------------------------------------------------------
+  security: {
+    enabled: true,                   // Private lock enabled for privacy
+    passcode: 'siri',                // Secret code to unlock (also accepts 'bngrm', 'seethaa', 'love')
+    magicKey: 'bngrm',               // Private magic key for direct link: ?key=bngrm
+    hint: "Hint: Robin's sweet name for you 💖 (siri / bngrm)",
+    lockedTitle: 'A Secret Surprise For Siri 🔐💖',
+    lockedSubtitle: 'This private digital world is crafted with love just for Robin\'s favorite person.',
+  },
+
   // ------------------------------------------------------------------
   // 1. NAMES & SENDER DETAILS
   // ------------------------------------------------------------------
@@ -50,87 +61,95 @@ export const personalization = {
   // ------------------------------------------------------------------
   // 4. SECTION C: OUR MEMORIES INSIDE THE HEART (PHOTO GALLERY)
   // ------------------------------------------------------------------
-  // 8 editable photo slots with portrait, square, and landscape support.
-  // Drop your photos into `public/images/memories/` (e.g. `memory1.jpg`) and update below!
+  // Configured with Robin's uploaded photos for Siri Bngrm!
+  // Frames and aspect ratios adjusted perfectly to match each photograph.
   gallery: [
     {
       id: 1,
-      title: 'Our Sweet Coffee Date ☕',
-      caption: 'When coffee was warm, but your company and smile were warmer.',
-      date: 'Sweet Moments',
-      image: '/images/memories/memory1.svg', // Replace with '/images/memories/photo1.jpg'
-      frameStyle: 'heart',
-      aspect: 'aspect-square',
+      title: 'That Unforgettable Smile ✨',
+      caption: 'The smile that lights up my whole universe and melts away all my worries.',
+      date: 'Pure Joy',
+      image: '/images/memories/photo1.jpeg',
+      frameStyle: 'polaroid',
+      aspect: 'aspect-[16/10]',
+      objectPosition: 'center 35%',
       rotation: '-rotate-2',
     },
     {
       id: 2,
-      title: 'Your Radiant Smile ✨',
-      caption: 'The smile that lights up my whole universe and melts away all my worries.',
-      date: 'Golden Hour',
-      image: '/images/memories/memory2.svg',
-      frameStyle: 'polaroid',
-      aspect: 'aspect-square',
-      rotation: 'rotate-3',
+      title: 'Sweetest Memories With You 🌸',
+      caption: 'Every place is magical and breathtaking as long as I am with you, Seethaa.',
+      date: 'Cherished Days',
+      image: '/images/memories/photo2.jpeg',
+      frameStyle: 'rounded',
+      aspect: 'aspect-[16/9]',
+      objectPosition: 'center',
+      rotation: 'rotate-2',
     },
     {
       id: 3,
-      title: 'That Unforgettable Adventure 🌿',
-      caption: 'Every place is magical and breathtaking as long as I am walking by your side.',
-      date: 'Wanderlust',
-      image: '/images/memories/memory3.svg',
-      frameStyle: 'rounded',
-      aspect: 'aspect-[4/3]',
+      title: 'Our Beautiful Happiness 💕',
+      caption: 'My absolute favorite sound in the whole world is hearing you laugh, Bngrm.',
+      date: 'Pure Happiness',
+      image: '/images/memories/photo3.jpeg',
+      frameStyle: 'polaroid',
+      aspect: 'aspect-[16/10]',
+      objectPosition: 'center',
       rotation: '-rotate-3',
     },
     {
       id: 4,
-      title: 'Under The Starlit Sky 🌙',
-      caption: 'In that quiet, gentle moment, my hand found its forever home in yours.',
-      date: 'Stargazing',
-      image: '/images/memories/memory4.svg',
-      frameStyle: 'heart',
-      aspect: 'aspect-square',
+      title: 'Breathtaking Beauty 👑',
+      caption: 'Among billions of people in this world, my heart and eyes only look for you.',
+      date: 'My Favorite View',
+      image: '/images/memories/photo4.jpeg',
+      frameStyle: 'polaroid',
+      aspect: 'aspect-[3/4]',          // Tailored for portrait photo
+      objectPosition: 'center top',
       rotation: 'rotate-2',
     },
     {
       id: 5,
-      title: 'Pure Uncontrollable Laughs 😂💕',
-      caption: 'My absolute favorite melody in the entire wide world is the sound of your laugh, Seethaa.',
-      date: 'Pure Happiness',
-      image: '/images/memories/memory5.svg',
-      frameStyle: 'polaroid',
-      aspect: 'aspect-square',
+      title: 'Golden Moments Together 🌅',
+      caption: 'Watching the day fade, but my heart is always glowing bright with you.',
+      date: 'Sunsets & Love',
+      image: '/images/memories/photo5.jpeg',
+      frameStyle: 'rounded',
+      aspect: 'aspect-[16/9]',
+      objectPosition: 'center',
       rotation: '-rotate-1',
     },
     {
       id: 6,
-      title: 'Golden Hour Together 🌅',
-      caption: 'Watching the sky turn pink and orange, but unable to take my eyes off you.',
-      date: 'Sunset Memories',
-      image: '/images/memories/memory6.svg',
-      frameStyle: 'rounded',
-      aspect: 'aspect-[4/3]',
+      title: 'Heart to Heart Moments 💬',
+      caption: 'Minutes turn into hours, and I never want our conversations to end.',
+      date: 'Unbreakable Bond',
+      image: '/images/memories/photo6.jpeg',
+      frameStyle: 'polaroid',
+      aspect: 'aspect-[16/10]',
+      objectPosition: 'center',
       rotation: 'rotate-2',
     },
     {
       id: 7,
-      title: 'Cozy Rainy Afternoon 🌧️',
-      caption: 'Wrapped in warm blankets, sharing hot tea, listening to raindrops with you.',
-      date: 'Peaceful Days',
-      image: '/images/memories/memory7.svg',
-      frameStyle: 'polaroid',
+      title: 'Under The Starlit Sky 🌙',
+      caption: 'Holding your hand and knowing you are the most special soul in my life.',
+      date: 'Stargazing',
+      image: '/images/memories/photo8.jpeg',
+      frameStyle: 'heart',
       aspect: 'aspect-square',
+      objectPosition: 'center',
       rotation: '-rotate-2',
     },
     {
       id: 8,
       title: 'To All Our Tomorrows 🥂',
-      caption: 'Here is to another year of loving you more deeply every single day, Bngrm.',
+      caption: 'Here is to another year of loving you more deeply every single day, Siri Bngrm.',
       date: 'Forever & Always',
-      image: '/images/memories/memory8.svg',
-      frameStyle: 'heart',
-      aspect: 'aspect-square',
+      image: '/images/memories/photo9.jpeg',
+      frameStyle: 'rounded',
+      aspect: 'aspect-[16/9]',
+      objectPosition: 'center',
       rotation: 'rotate-1',
     },
   ],
@@ -143,7 +162,7 @@ export const personalization = {
       id: 1,
       tag: 'Chapter 1',
       title: 'The Day We Met 🌸',
-      date: '[Add Date or Special Moment]',
+      date: 'The Beginning of Magic',
       description: 'The universe aligned and brought us together. Out of billions of people in this world, I found you—the sweetest, kindest soul.',
       icon: 'sparkles',
       photo: '',
@@ -152,7 +171,7 @@ export const personalization = {
       id: 2,
       tag: 'Chapter 2',
       title: 'Our First Conversation 💬',
-      date: '[Add Date or Memory]',
+      date: 'Hours Like Minutes',
       description: 'Talking to you felt as natural as breathing. Minutes turned into hours, and I knew right away that you were going to be truly special to me.',
       icon: 'message',
       photo: '',
@@ -161,7 +180,7 @@ export const personalization = {
       id: 3,
       tag: 'Chapter 3',
       title: 'My Favourite Memory 📸',
-      date: '[Add Date or Memory]',
+      date: 'Etched in My Heart',
       description: 'Whether we were laughing until our stomachs hurt or just sitting in peaceful silence, that moment with you is etched forever in my heart.',
       icon: 'heart',
       photo: '',
@@ -170,7 +189,7 @@ export const personalization = {
       id: 4,
       tag: 'Chapter 4',
       title: 'A Moment That Made Me Smile ☀️',
-      date: '[Add Date or Memory]',
+      date: 'Pure Sunshine',
       description: 'Your laugh, your cute gestures, and the way your eyes light up when you are excited—you brightened my whole world without even trying.',
       icon: 'smile',
       photo: '',
@@ -179,7 +198,7 @@ export const personalization = {
       id: 5,
       tag: 'Chapter 5',
       title: 'Our Most Special Memory 💫',
-      date: '[Add Date or Memory]',
+      date: 'Time Stood Still',
       description: 'A quiet, perfect moment where time stopped. Looking at you, I realized just how deeply and truly I cherish having you in my life.',
       icon: 'star',
       photo: '',
@@ -340,13 +359,9 @@ export const personalization = {
   // 10. SECTION J: BACKGROUND MUSIC
   // ------------------------------------------------------------------
   music: {
-    // Drop your MP3 file into `public/audio/` (e.g. `public/audio/song.mp3`)
-    // and write the path here: '/audio/song.mp3'.
-    // If left as '' or file not found, the site automatically generates
-    // a soothing romantic music-box melody in the browser!
-    audioSrc: '',
-    title: 'Romantic Music Box Melody 🎶',
-    artist: 'For Siri Bngrm',
+    audioSrc: '/audio/siri-song.mp3', // Robin's custom uploaded song!
+    title: 'Special Melody for Siri 🎶',
+    artist: 'With All My Love • Robin',
   },
 
   // ------------------------------------------------------------------
