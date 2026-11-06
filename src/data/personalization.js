@@ -1,44 +1,37 @@
 /**
  * ====================================================================
- * 💖 ROMANTIC BIRTHDAY SURPRISE - PERSONALIZATION CONFIGURATION 💖
+ * 💖 A LITTLE HEART, A THOUSAND MEMORIES 💖
+ * ROMANTIC BIRTHDAY SURPRISE - PERSONALIZATION CONFIGURATION
  * ====================================================================
  * 
- * Welcome Robin! This is the ONE central file you need to edit to customize
+ * Welcome Robin! This is the ONE central file you need to customize
  * the entire website for your girlfriend. Every section pulls its content
  * directly from this file.
  * 
- * INSTRUCTIONS:
- * 1. Change the values below inside the quotation marks (e.g., 'Her Name').
- * 2. If you don't know a date yet, leave it empty '' or use the suggested format.
- * 3. To add your own photos: place image files in the `public/photos/` folder
- *    and update the `image` paths in the `gallery` array below.
- * 4. To add custom music: place an MP3 file (e.g. `romantic-melody.mp3`) in the
- *    `public/` folder and update `music.audioSrc` below. If left empty, the site
- *    plays a soft, romantic music-box melody synthesized automatically!
+ * QUICK CUSTOMIZATION GUIDE:
+ * 1. Change the names, dates, and sweet messages below.
+ * 2. To add your real photos:
+ *    - Save your pictures into `public/images/memories/` (e.g. `our-first-date.jpg`)
+ *    - Update the `image` path in the `gallery` array below (e.g. `/images/memories/our-first-date.jpg`)
+ *    - The website includes 8 beautiful romantic placeholders so it works immediately even before adding photos!
+ * 3. To add your own song:
+ *    - Place an MP3 file into `public/audio/` (e.g. `public/audio/romantic-song.mp3`)
+ *    - Set `music.audioSrc: '/audio/romantic-song.mp3'`
+ *    - If left empty, the site automatically generates a soothing romantic music-box melody in real-time!
+ * 4. Anniversary Date:
+ *    - Set `dates.anniversaryDate: 'YYYY-MM-DD'` (e.g. '2024-03-15')
+ *    - If left empty, it displays a lovely timeless message without broken numbers.
  * 
  * ====================================================================
  */
 
 export const personalization = {
   // ------------------------------------------------------------------
-  // 0. PRIVACY & PASSCODE PROTECTION 🔐
-  // ------------------------------------------------------------------
-  security: {
-    enabled: true,                   // Set to false if you want the website open without a lock
-    passcode: 'love',                // Secret password to unlock (case-insensitive, e.g. her birthdate or 'love')
-    hint: 'Hint: The sweet 4-letter word that brought us together 💖',
-    magicKey: 'surprise',            // Secret key for your magic private link!
-                                     // Sharing your URL with `?key=surprise` opens the site instantly!
-    lockedTitle: 'A Secret Birthday Surprise 🔐💖',
-    lockedSubtitle: 'This private love letter is locked just for Robin\'s favorite person.',
-  },
-
-  // ------------------------------------------------------------------
-  // 1. NAMES & GENERAL DETAILS
+  // 1. NAMES & SENDER DETAILS
   // ------------------------------------------------------------------
   recipient: {
-    name: 'My Sweetheart',            // Replace with her real name or special nickname (e.g., 'Ananya', 'Cutie', 'Angel')
-    nickname: 'Babe',                 // Sweet nickname used in subtle buttons and hints
+    name: 'My Love',                  // Replace with her real name or nickname (e.g., 'Ananya', 'Priya', 'Cutie')
+    nickname: 'Sweetheart',           // Sweet pet name used in buttons and hints
   },
   sender: {
     name: 'Robin',                    // Your name
@@ -46,44 +39,121 @@ export const personalization = {
   },
 
   // ------------------------------------------------------------------
-  // 2. DATES
+  // 2. IMPORTANT DATES
   // ------------------------------------------------------------------
   dates: {
-    // Birthday date format: 'YYYY-MM-DD' or leave as string
-    birthday: 'Today',                // e.g. 'October 16' or '2026-10-16'
+    // Birthday date display
+    birthday: 'Today',                // e.g. 'October 16' or 'November 6'
     
-    // Anniversary Date (When you started dating / became official)
-    // Format: 'YYYY-MM-DD' (e.g. '2024-03-15')
-    // If left empty '', the site will show a heartwarming message:
-    // "Every second with you is timeless ⏳💫"
-    anniversaryDate: '',              // e.g., '2024-06-18' or leave empty '' until ready!
+    // Anniversary Date (When your journey together began)
+    // Format: 'YYYY-MM-DD' (e.g. '2024-04-18')
+    // If left empty '', the site gracefully displays:
+    // "Every single moment spent with you is special, timeless and forever precious." ⏳✨
+    anniversaryDate: '',              // e.g., '2024-05-20' or leave empty '' until ready!
   },
 
   // ------------------------------------------------------------------
-  // 3. WELCOME / HERO SCREEN
+  // 3. SECTION B: PERSONALIZED BIRTHDAY WELCOME
   // ------------------------------------------------------------------
   hero: {
     badge: 'Today is your special day ✨',
     greeting: 'Happy Birthday, My Love! 🎂💗',
     subtitle: 'Today is all about you, my favorite person in the entire world.',
-    buttonText: 'Open Your Birthday Surprise 🎁',
-    hintText: 'Click the button or scroll down to begin the journey 💕',
+    buttonText: "Let's Explore Our Memories 💕",
+    hintText: 'Click the button or scroll down to begin our journey 💕',
   },
 
   // ------------------------------------------------------------------
-  // 4. BIRTHDAY CELEBRATION (CAKE & WISH)
+  // 4. SECTION C: OUR MEMORIES INSIDE THE HEART (PHOTO GALLERY)
   // ------------------------------------------------------------------
-  cake: {
-    sectionTitle: 'Make a Birthday Wish 🎂',
-    sectionSubtitle: 'Tap the candles to blow them out and make a wish from the bottom of your heart!',
-    instructionBefore: 'Tap the glowing candles to blow them out 💨',
-    instructionAfter: '✨ Your wish has flown up to the stars! May all your dreams come true! ✨',
-    secretWishPlaceholder: 'Whisper your secret wish here...',
-    wishSavedMessage: 'Your wish has been sealed with love 💖',
-  },
+  // At least 8 editable photo slots with portrait, square, and landscape support.
+  // Drop your photos in `public/images/memories/` and set the path below!
+  // Pre-configured with 8 beautiful, illustrated local SVG cards that never 404.
+  gallery: [
+    {
+      id: 1,
+      title: 'Our Sweet Coffee Date ☕',
+      caption: 'When coffee was warm, but your company and smile were warmer.',
+      date: 'Sweet Moments',
+      image: '/images/memories/memory1.svg', // Replace with '/images/memories/your-photo1.jpg'
+      frameStyle: 'heart',                   // 'heart' | 'polaroid' | 'rounded'
+      aspect: 'aspect-square',
+      rotation: '-rotate-2',
+    },
+    {
+      id: 2,
+      title: 'Your Radiant Smile ✨',
+      caption: 'The smile that lights up my whole universe and melts away all my worries.',
+      date: 'Golden Hour',
+      image: '/images/memories/memory2.svg',
+      frameStyle: 'polaroid',
+      aspect: 'aspect-square',
+      rotation: 'rotate-3',
+    },
+    {
+      id: 3,
+      title: 'That Unforgettable Adventure 🌿',
+      caption: 'Every place is magical and breathtaking as long as I am walking by your side.',
+      date: 'Wanderlust',
+      image: '/images/memories/memory3.svg',
+      frameStyle: 'rounded',
+      aspect: 'aspect-[4/3]',
+      rotation: '-rotate-3',
+    },
+    {
+      id: 4,
+      title: 'Under The Starlit Sky 🌙',
+      caption: 'In that quiet, gentle moment, my hand found its forever home in yours.',
+      date: 'Stargazing',
+      image: '/images/memories/memory4.svg',
+      frameStyle: 'heart',
+      aspect: 'aspect-square',
+      rotation: 'rotate-2',
+    },
+    {
+      id: 5,
+      title: 'Pure Uncontrollable Laughs 😂💕',
+      caption: 'My absolute favorite melody in the entire wide world is the sound of your laugh.',
+      date: 'Pure Happiness',
+      image: '/images/memories/memory5.svg',
+      frameStyle: 'polaroid',
+      aspect: 'aspect-square',
+      rotation: '-rotate-1',
+    },
+    {
+      id: 6,
+      title: 'Golden Hour Together 🌅',
+      caption: 'Watching the sky turn pink and orange, but unable to take my eyes off you.',
+      date: 'Sunset Memories',
+      image: '/images/memories/memory6.svg',
+      frameStyle: 'rounded',
+      aspect: 'aspect-[4/3]',
+      rotation: 'rotate-2',
+    },
+    {
+      id: 7,
+      title: 'Cozy Rainy Afternoon 🌧️',
+      caption: 'Wrapped in warm blankets, sharing hot tea, listening to raindrops with you.',
+      date: 'Peaceful Days',
+      image: '/images/memories/memory7.svg',
+      frameStyle: 'polaroid',
+      aspect: 'aspect-square',
+      rotation: '-rotate-2',
+    },
+    {
+      id: 8,
+      title: 'To All Our Tomorrows 🥂',
+      caption: 'Here is to another year of loving you more deeply every single day.',
+      date: 'Forever & Always',
+      image: '/images/memories/memory8.svg',
+      frameStyle: 'heart',
+      aspect: 'aspect-square',
+      rotation: 'rotate-1',
+    },
+  ],
 
   // ------------------------------------------------------------------
-  // 5. OUR LOVE STORY (TIMELINE MILESTONES)
+  // 5. SECTION D: OUR LOVE STORY TIMELINE
   // ------------------------------------------------------------------
   timeline: [
     {
@@ -93,6 +163,7 @@ export const personalization = {
       date: '[Add Date or Special Moment]',
       description: 'The universe aligned and brought us together. Out of billions of people in this world, I found you—the sweetest, kindest soul.',
       icon: 'sparkles',
+      photo: '', // Optional milestone photo path, e.g. '/images/memories/day-we-met.jpg'
     },
     {
       id: 2,
@@ -101,22 +172,25 @@ export const personalization = {
       date: '[Add Date or Memory]',
       description: 'Talking to you felt as natural as breathing. Minutes turned into hours, and I knew right away that you were going to be truly special to me.',
       icon: 'message',
+      photo: '',
     },
     {
       id: 3,
       tag: 'Chapter 3',
-      title: 'My Favorite Memory With You 📸',
+      title: 'My Favourite Memory 📸',
       date: '[Add Date or Memory]',
       description: 'Whether we were laughing until our stomachs hurt or just sitting in peaceful silence, that moment with you is etched forever in my heart.',
       icon: 'heart',
+      photo: '',
     },
     {
       id: 4,
       tag: 'Chapter 4',
-      title: 'The Moment You Made Me Smile ☀️',
+      title: 'A Moment That Made Me Smile ☀️',
       date: '[Add Date or Memory]',
       description: 'Your laugh, your cute gestures, and the way your eyes light up when you are excited—you brightened my whole world without even trying.',
       icon: 'smile',
+      photo: '',
     },
     {
       id: 5,
@@ -125,135 +199,87 @@ export const personalization = {
       date: '[Add Date or Memory]',
       description: 'A quiet, perfect moment where time stopped. Looking at you, I realized just how deeply and truly I cherish having you in my life.',
       icon: 'star',
+      photo: '',
     },
     {
       id: 6,
       tag: 'The Future',
-      title: 'All The Little Moments Waiting For Us 🌅',
+      title: 'All The Beautiful Moments Still Waiting For Us 🌅',
       date: 'Every tomorrow & forever',
       description: 'More coffee dates, cozy movie nights, spontaneous travels, shared laughs, and countless sunsets. The best chapters of our story are still ahead.',
       icon: 'infinity',
+      photo: '',
     },
   ],
 
   // ------------------------------------------------------------------
-  // 6. OUR MEMORIES / PHOTO GALLERY (POLAROID CARDS)
-  // ------------------------------------------------------------------
-  // Put your pictures in `public/photos/` and set the `image` field to '/photos/filename.jpg'.
-  // If no custom image is provided, a beautiful romantic illustrated card is displayed!
-  gallery: [
-    {
-      id: 1,
-      title: 'Our Cutest Coffee Date ☕',
-      caption: 'When coffee was warm, but your company was warmer.',
-      date: 'Sweet Memories',
-      image: '', // e.g. '/photos/photo1.jpg'
-      rotation: '-rotate-2',
-      aspect: 'aspect-[4/5]',
-    },
-    {
-      id: 2,
-      title: 'Your Radiant Smile ✨',
-      caption: 'The smile that lights up my whole universe.',
-      date: 'Golden Hour',
-      image: '', // e.g. '/photos/photo2.jpg'
-      rotation: 'rotate-3',
-      aspect: 'aspect-square',
-    },
-    {
-      id: 3,
-      title: 'That Unforgettable Adventure 🌿',
-      caption: 'Every place is magical as long as I am with you.',
-      date: 'Wanderlust',
-      image: '', // e.g. '/photos/photo3.jpg'
-      rotation: '-rotate-3',
-      aspect: 'aspect-[4/3]',
-    },
-    {
-      id: 4,
-      title: 'Holding Hands Under The Stars 🌙',
-      caption: 'In that quiet moment, my hand found its home.',
-      date: 'Stargazing',
-      image: '', // e.g. '/photos/photo4.jpg'
-      rotation: 'rotate-2',
-      aspect: 'aspect-[4/5]',
-    },
-    {
-      id: 5,
-      title: 'Uncontrollable Laughs 😂💕',
-      caption: 'My favorite sound in the whole wide world is your laugh.',
-      date: 'Pure Happiness',
-      image: '', // e.g. '/photos/photo5.jpg'
-      rotation: '-rotate-1',
-      aspect: 'aspect-square',
-    },
-    {
-      id: 6,
-      title: 'To All Our Tomorrows 🥂',
-      caption: 'Here is to another year of loving you more every single day.',
-      date: 'Forever & Always',
-      image: '', // e.g. '/photos/photo6.jpg'
-      rotation: 'rotate-2',
-      aspect: 'aspect-[4/3]',
-    },
-  ],
-
-  // ------------------------------------------------------------------
-  // 7. A FEW REASONS WHY YOU ARE MY FAVORITE PERSON
+  // 6. SECTION E: A FEW REASONS WHY YOU'RE MY FAVORITE PERSON 💗
   // ------------------------------------------------------------------
   reasons: [
     {
       id: 1,
       title: 'Your Contagious Smile ☀️',
-      reason: 'Your smile lights up even the darkest days and instantly melts all my stress away.',
+      reason: 'Your smile makes my day better instantly. It lights up even the darkest room and melts away all my stress.',
       icon: 'smile',
     },
     {
       id: 2,
       title: 'Magic in Ordinary Moments ✨',
-      reason: 'With you, even grocery runs and waiting in traffic turn into fun, memorable adventures.',
+      reason: 'You make ordinary moments special. Even a simple grocery run or sitting in traffic turns into a cherished adventure with you.',
       icon: 'sparkles',
     },
     {
       id: 3,
       title: 'The Sound of Your Laugh 🎶',
-      reason: 'It is the most genuine, heartwarming melody I have ever heard, and hearing it makes my day complete.',
+      reason: 'I love the way you laugh. It is the most genuine, heartwarming melody I have ever heard, and hearing it completes my day.',
       icon: 'music',
     },
     {
       id: 4,
       title: 'How Lucky You Make Me Feel 🍀',
-      reason: 'Every single day I pause and think how blessed I am to have someone as sweet and loving as you by my side.',
+      reason: 'You make me feel lucky. Every single day I pause and realize how deeply blessed I am to have you holding my hand.',
       icon: 'heart',
     },
     {
       id: 5,
-      title: 'Your Caring Heart 💖',
-      reason: 'The pure kindness, gentleness, and empathy you show to everyone around you inspires me.',
+      title: 'Pure Happiness In My Life 💖',
+      reason: 'You bring happiness into my life. Your kindness, your gentleness, and your warm spirit inspire me to be a better person.',
       icon: 'handHeart',
     },
     {
       id: 6,
-      title: 'The Little Things You Do 🌸',
-      reason: 'The way you text me, the funny faces you make, and how you remember small details about us.',
+      title: 'Unforgettable Little Things 🌸',
+      reason: 'You make little things unforgettable. The cute ways you text me, your silly expressions, and the small details you remember.',
       icon: 'gift',
     },
     {
       id: 7,
-      title: 'Simply Being With You 🕊️',
-      reason: 'No matter what we are doing, even just sitting in silence, you make everywhere feel like home.',
+      title: 'Spending Time With You 🕊️',
+      reason: 'I love spending time with you. No matter where we are, even in total silence, just being near you feels like home.',
       icon: 'coffee',
     },
     {
       id: 8,
       title: 'Our Beautiful Future 🌅',
-      reason: 'Because there is still so much of this world I want to discover and experience holding your hand.',
+      reason: 'There is still so much I want to experience with you. Every dream, trip, and quiet evening is better with you in it.',
       icon: 'sun',
     },
   ],
 
   // ------------------------------------------------------------------
-  // 8. THE PERSONAL LOVE LETTER
+  // 7. SECTION F: INTERACTIVE BIRTHDAY CAKE
+  // ------------------------------------------------------------------
+  cake: {
+    sectionTitle: 'Make a Birthday Wish 🎂',
+    sectionSubtitle: 'Tap the candles to blow them out and make a wish from the bottom of your heart!',
+    instructionBefore: 'Tap the glowing candles to blow them out 💨',
+    instructionAfter: 'Your wish deserves to come true ✨',
+    secretWishPlaceholder: 'Whisper your secret wish here...',
+    wishSavedMessage: 'Your wish has been sealed with love in your heart 💖',
+  },
+
+  // ------------------------------------------------------------------
+  // 8. SECTION G: THE PERSONAL LOVE LETTER
   // ------------------------------------------------------------------
   loveLetter: {
     envelopePrompt: 'A Sealed Letter For You 💌 (Tap to Open)',
@@ -261,15 +287,15 @@ export const personalization = {
     paragraphs: [
       'On this day, the most beautiful soul was born, and I am endlessly grateful that our paths crossed in this big world.',
       'You bring warmth to ordinary mornings, laughter to quiet evenings, and peace to my heart in ways no one else ever could. Your kindness, beauty, and bright spirit make everything around you bloom.',
-      'Thank you for being my favorite confidante, my biggest smile, and the best part of every day. Seeing you happy is my greatest joy.',
+      'Thank you for being my favorite confidante, my biggest smile, and the best part of every day. Seeing you happy is my greatest joy in life.',
       'On your birthday, I wish you a year filled with boundless happiness, cherished dreams fulfilled, cozy moments, and all the love your heart can hold.',
     ],
-    closing: 'With all my heart and love,',
+    closing: 'With all my heart and endless love,',
     signature: 'Forever your person, Robin 💗',
   },
 
   // ------------------------------------------------------------------
-  // 9. CUTE LOVE QUIZ
+  // 9. SECTION I: CUTE LOVE QUIZ
   // ------------------------------------------------------------------
   quiz: {
     title: 'A Little Couple Quiz! 🎮💕',
@@ -277,45 +303,45 @@ export const personalization = {
     questions: [
       {
         id: 1,
+        question: 'What is my absolute favourite thing about you?',
+        options: [
+          'Your gorgeous smile that lights up my whole day ✨',
+          'Your cute laugh that melts my heart 🥰',
+          'Your kind, gentle, and caring soul 💖',
+          'All of the above, plus a million more reasons! 👑',
+        ],
+        reaction: 'Ding ding ding! You are perfection in every way possible! 💕',
+      },
+      {
+        id: 2,
         question: 'Who took longer to get ready for our dates?',
         options: [
-          'Definitely you! (Looking stunning takes time 😉)',
+          'Definitely you! (Looking breathtaking takes time 😉)',
           'Me (Staring in the mirror trying to impress you)',
           'Both of us equally!',
           'Time freezes when we are together anyway!',
         ],
-        reaction: 'Haha! You always look absolutely breathtaking no matter what! 🥰',
+        reaction: 'Haha! You always look absolutely stunning no matter what! 🥰',
       },
       {
-        id: 2,
-        question: 'What is our ultimate comfort food craving together?',
+        id: 3,
+        question: 'What is our ultimate comfort craving together?',
         options: [
           'Pizza & Ice Cream 🍕🍦',
-          'Late-night snacks & boba Bob🧋',
+          'Late-night snacks & sweet treats 🧋',
           'Cozy homemade food 🍲',
           'Dessert first, everything else later! 🍰',
         ],
         reaction: 'Yummy! Whatever we eat, it tastes 100x better when sharing with you! 😋',
       },
       {
-        id: 3,
-        question: 'Where is our dream spontaneous getaway?',
-        options: [
-          'A quiet cozy cabin in the misty hills 🏔️',
-          'Watching the sunset on a warm sunny beach 🏖️',
-          'A romantic city with fairy lights & cafes ☕',
-          'Anywhere, as long as we are together ✈️',
-        ],
-        reaction: 'Any place in the universe is paradise as long as you are by my side! 💖',
-      },
-      {
         id: 4,
         question: 'How much do I love you?',
         options: [
           'To the moon and back 🌙',
-          'More than all the stars in the sky ✨',
+          'More than all the stars in the night sky ✨',
           'Beyond what words can ever explain 💗',
-          'All of the above, plus infinity! 🚀💖',
+          'All of the above, multiplied by infinity! 🚀💖',
         ],
         reaction: 'Correct answer! Infinity and beyond, always and forever! 🏆💕',
       },
@@ -328,27 +354,27 @@ export const personalization = {
   },
 
   // ------------------------------------------------------------------
-  // 10. BACKGROUND MUSIC PLAYER
+  // 10. SECTION J: BACKGROUND MUSIC
   // ------------------------------------------------------------------
   music: {
-    // Put your audio file in `public/` (e.g., `public/birthday-song.mp3`)
-    // and write the relative path here: '/birthday-song.mp3'.
-    // If left as '' or file not found, the site plays a built-in soothing
-    // romantic music-box melody created using Web Audio API!
-    audioSrc: '', 
+    // Drop an MP3 into `public/audio/` (e.g. `public/audio/romantic-song.mp3`)
+    // and write the path here: '/audio/romantic-song.mp3'.
+    // If left as '' or file not found, the site automatically generates
+    // a soothing romantic music-box melody in the browser!
+    audioSrc: '',
     title: 'Romantic Music Box Melody 🎶',
     artist: 'For You',
   },
 
   // ------------------------------------------------------------------
-  // 11. THE FINAL SURPRISE
+  // 11. SECTION K: THE FINAL SURPRISE
   // ------------------------------------------------------------------
   finalSurprise: {
     buttonPrompt: 'One Last Surprise 💌',
-    title: 'Happy Birthday, My Queen! 👑🎂',
+    title: 'Happy Birthday, My Love! 💗',
     message: 'Thank you for existing, for being you, and for bringing pure magic into my life. May this year be as radiant, gentle, and wonderful as your heart.',
-    subMessage: 'I will always be here cheering for you, loving you, and making sure you smile every day.',
-    signature: 'All my love, Robin 💗',
-    replayButton: 'Experience The Magic Again 🌸',
+    subMessage: 'I will always be right here cheering for you, loving you, and making sure you smile every single day.',
+    signature: 'Forever your person, Robin.',
+    replayButton: 'Start Our Little Story Again 🌸',
   },
-}
+};

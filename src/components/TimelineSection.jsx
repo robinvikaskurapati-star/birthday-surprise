@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Sparkles, MessageCircle, Smile, Star, Infinity, BookOpen } from 'lucide-react';
+import { Heart, Sparkles, MessageCircle, Smile, Star, Infinity, BookOpen, Camera } from 'lucide-react';
 import { personalization } from '../data/personalization';
 
 export default function TimelineSection() {
@@ -23,8 +23,16 @@ export default function TimelineSection() {
   };
 
   return (
-    <section id="our-story" className="py-20 px-4 relative bg-[#fff9fa]">
-      <div className="max-w-4xl mx-auto">
+    <section id="our-story" className="py-24 px-4 relative bg-[#fff9fa] overflow-hidden">
+      {/* Decorative floating flowers */}
+      <div className="absolute top-12 right-10 text-4xl select-none animate-float opacity-50 pointer-events-none">
+        🌸
+      </div>
+      <div className="absolute bottom-16 left-8 text-4xl select-none animate-float-slow opacity-50 pointer-events-none">
+        💖
+      </div>
+
+      <div className="max-w-4xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-xs font-semibold uppercase tracking-wider mb-3">
@@ -32,9 +40,9 @@ export default function TimelineSection() {
             <span>Our Journey</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-display font-bold text-gray-900 mb-3">
-            Our Love Story 📖💗
+            Our Love Story Timeline 📖💗
           </h2>
-          <p className="text-gray-600 max-w-lg mx-auto text-base sm:text-lg font-light">
+          <p className="text-gray-600 max-w-lg mx-auto text-base sm:text-lg font-light leading-relaxed">
             Every step, every laugh, and every quiet moment that brought us closer together.
           </p>
         </div>
@@ -45,7 +53,7 @@ export default function TimelineSection() {
           <div className="absolute left-6 sm:left-1/2 top-4 bottom-4 -translate-x-1/2 w-0.5 bg-gradient-to-b from-pink-300 via-rose-300 to-pink-200 border-l-2 border-dashed border-pink-300" />
 
           <div className="space-y-12">
-            {personalization.timeline.map((item, index) => {
+            {(personalization.timeline || []).map((item, index) => {
               const isEven = index % 2 === 0;
 
               return (
@@ -56,16 +64,16 @@ export default function TimelineSection() {
                   }`}
                 >
                   {/* Timeline Badge Center Pin */}
-                  <div className="absolute left-6 sm:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white border-2 border-pink-400 shadow-md flex items-center justify-center z-10 hover:scale-110 transition-transform">
+                  <div className="absolute left-6 sm:left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-white border-2 border-pink-400 shadow-md flex items-center justify-center z-10 hover:scale-110 transition-transform">
                     {getIcon(item.icon)}
                   </div>
 
                   {/* Content Card */}
                   <div className="ml-16 sm:ml-0 sm:w-1/2 px-2 sm:px-8">
-                    <div className="romantic-glass rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-pink-200/80 group">
+                    <div className="romantic-glass rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-pink-200/80 group transform hover:-translate-y-1">
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <span className="text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-pink-100 text-pink-700">
-                          {item.tag}
+                          {item.tag || `Milestone #${index + 1}`}
                         </span>
                         <span className="text-xs text-pink-500 font-medium font-mono">
                           {item.date}
@@ -75,6 +83,20 @@ export default function TimelineSection() {
                       <h3 className="text-xl font-display font-bold text-gray-800 group-hover:text-pink-600 transition-colors mb-2">
                         {item.title}
                       </h3>
+
+                      {/* Optional Milestone Photograph */}
+                      {item.photo && (
+                        <div className="my-3 w-full h-36 rounded-xl overflow-hidden shadow-inner bg-pink-50 relative">
+                          <img
+                            src={item.photo}
+                            alt={item.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                            }}
+                          />
+                        </div>
+                      )}
 
                       <p className="text-sm text-gray-600 leading-relaxed font-light">
                         {item.description}

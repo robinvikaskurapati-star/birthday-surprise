@@ -1,12 +1,7 @@
 # ==========================================================
-# 🚀 1-Click Birthday Surprise GitHub Deployment Script
+# 🚀 Birthday Surprise GitHub Deployment Script
 # ==========================================================
-Write-Host "💖 Starting Birthday Surprise Deployment..." -ForegroundColor Magenta
-
-# Ensure Git and GitHub CLI are in PATH
-$gitDir = "$env:LOCALAPPDATA\Programs\Git\cmd"
-$ghDir = "$env:LOCALAPPDATA\Programs\gh\bin"
-$env:Path = "$gitDir;$ghDir;" + $env:Path
+Write-Host "`n💖 Starting Birthday Surprise Deployment..." -ForegroundColor Magenta
 
 # Check Git Status
 git status
@@ -14,7 +9,7 @@ git status
 # Check if authenticated with GitHub
 $authCheck = gh auth status 2>&1
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "`n🔑 GitHub authorization required. Please follow the prompt below to sign into your account (robinvikaskurapati-star):" -ForegroundColor Cyan
+    Write-Host "`n🔑 GitHub authorization needed. Please sign in below to your account (robinvikaskurapati-star):" -ForegroundColor Cyan
     gh auth login --hostname github.com --git-protocol https --web
 }
 
@@ -28,7 +23,7 @@ if ($LASTEXITCODE -ne 0) {
     Write-Host "Repository exists. Pushing latest changes..." -ForegroundColor Green
     git remote remove origin 2>$null
     git remote add origin https://github.com/robinvikaskurapati-star/birthday-surprise.git
-    git push -u origin main --force
+    git push -u origin main
 }
 
 # Enable GitHub Pages via GitHub Actions

@@ -1,24 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
-import { Sparkles, Heart, Wind, Flame, Check } from 'lucide-react';
+import { Sparkles, Heart, Wind, Flame, Check, Mic, MicOff } from 'lucide-react';
 import { personalization } from '../data/personalization';
+import { soundEffects } from '../utils/soundEffects';
 
 export default function CakeSection() {
   const [candlesLit, setCandlesLit] = useState(true);
   const [wishText, setWishText] = useState('');
   const [wishSaved, setWishSaved] = useState(false);
   const [hasBlownOut, setHasBlownOut] = useState(false);
+  const [isMicListening, setIsMicListening] = useState(false);
+  const [micError, setMicError] = useState(null);
+
+  const audioStreamRef = useRef(null);
+  const animFrameRef = useRef(null);
 
   const blowOutCandles = () => {
     if (!candlesLit) return;
     setCandlesLit(false);
     setHasBlownOut(true);
+    stopMicListening();
 
-    // Fire big celebratory confetti shower
+    // Play soft candle blow sound effect
+    soundEffects.playCandleBlow();
+
+    // Celebratory Confetti & Sparkles
     try {
-      const count = 200;
+      const count = 220;
       const defaults = {
-        origin: { y: 0.7 },
+        origin: { y: 0.65 },
         colors: ['#ff6b8b', '#ff8da1', '#ffc2d1', '#ffe5ec', '#ffd166', '#a0c4ff'],
       };
 
@@ -35,18 +45,18 @@ export default function CakeSection() {
       fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
       fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
       fire(0.1, { spread: 120, startVelocity: 45 });
-    } catch {
-      // Confetti fallback
-    }
+    } catch {}
   };
 
   const relightCandles = () => {
+    soundEffects.playPop();
     setCandlesLit(true);
   };
 
   const saveWish = (e) => {
     e.preventDefault();
     if (!wishText.trim()) return;
+    soundEffects.playPop();
     try {
       localStorage.setItem('birthday_surprise_secret_wish', wishText);
     } catch {}
@@ -54,19 +64,86 @@ export default function CakeSection() {
     setTimeout(() => setWishSaved(false), 4000);
   };
 
+  // Optional microphone blow detection
+  const startMicListening = async () => {
+    setMicError(null);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+      audioStreamRef.current = stream;
+      setIsMicListening(true);
+
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      const audioCtx = new AudioContextClass();
+      const analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 256;
+      const source = audioCtx.createMediaStreamSource(stream);
+      source.connect(analyser);
+
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+
+      const checkVolume = () => {
+        analyser.getByteFrequencyData(dataArray);
+        let sum = 0;
+        for (let i = 0; i < bufferLength; i++) {
+          sum += dataArray[i];
+        }
+        const average = sum / bufferLength;
+
+        // If average volume crosses gentle blowing threshold (e.g. 55)
+        if (average > 55) {
+          blowOutCandles();
+          return;
+        }
+
+        animFrameRef.current = requestAnimationFrame(checkVolume);
+      };
+
+      checkVolume();
+    } catch (err) {
+      setIsMicListening(false);
+      setMicError('Mic access was not granted. Tap to blow works anytime!');
+    }
+  };
+
+  const stopMicListening = () => {
+    if (audioStreamRef.current) {
+      audioStreamRef.current.getTracks().forEach((track) => track.stop());
+      audioStreamRef.current = null;
+    }
+    if (animFrameRef.current) {
+      cancelAnimationFrame(animFrameRef.current);
+    }
+    setIsMicListening(false);
+  };
+
+  useEffect(() => {
+    return () => {
+      stopMicListening();
+    };
+  }, []);
+
   return (
-    <section id="birthday-cake" className="py-20 px-4 relative overflow-hidden bg-[#fff5f7]">
-      <div className="max-w-3xl mx-auto text-center">
+    <section id="birthday-cake" className="py-24 px-4 relative overflow-hidden bg-[#fff5f7]">
+      {/* Decorative floating party elements */}
+      <div className="absolute top-10 left-10 text-4xl select-none animate-float opacity-50 pointer-events-none">
+        🎈
+      </div>
+      <div className="absolute top-14 right-10 text-4xl select-none animate-float-slow opacity-50 pointer-events-none">
+        ✨
+      </div>
+
+      <div className="max-w-3xl mx-auto text-center relative z-10">
         {/* Section Header */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100/80 text-pink-700 text-xs font-semibold uppercase tracking-wider mb-3">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100/90 text-pink-700 text-xs font-semibold uppercase tracking-wider mb-3">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Interactive Celebration</span>
+          <span>Make A Wish</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-display font-bold text-gray-900 mb-3">
-          {personalization.cake.sectionTitle}
+          {personalization.cake?.sectionTitle || 'Make a Birthday Wish 🎂'}
         </h2>
-        <p className="text-gray-600 max-w-lg mx-auto text-base sm:text-lg font-light mb-10">
-          {personalization.cake.sectionSubtitle}
+        <p className="text-gray-600 max-w-lg mx-auto text-base sm:text-lg font-light mb-10 leading-relaxed">
+          {personalization.cake?.sectionSubtitle || 'Tap the candles to blow them out and make a wish from the bottom of your heart!'}
         </p>
 
         {/* Illustrated Birthday Cake Container */}
@@ -78,12 +155,20 @@ export default function CakeSection() {
                 key={candleIndex}
                 onClick={blowOutCandles}
                 className="cursor-pointer flex flex-col items-center relative"
-                title="Tap to blow out!"
+                title="Tap to blow out candle!"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    blowOutCandles();
+                  }
+                }}
+                aria-label={`Birthday candle #${candleIndex}. Tap to blow out.`}
               >
                 {/* Flame or Smoke */}
                 {candlesLit ? (
                   <div className="relative mb-1 flex items-center justify-center">
-                    {/* Outer glow */}
                     <div className="w-5 h-7 rounded-full bg-gradient-to-t from-orange-400 via-yellow-300 to-white candle-flame shadow-lg shadow-yellow-300/80" />
                     <div className="absolute w-2 h-3 rounded-full bg-blue-300/70 bottom-0" />
                   </div>
@@ -95,7 +180,6 @@ export default function CakeSection() {
 
                 {/* Candle Stick */}
                 <div className="w-4 h-14 rounded-t-sm bg-gradient-to-r from-pink-300 via-white to-pink-300 shadow-md border-t border-pink-400 relative overflow-hidden">
-                  {/* Decorative diagonal stripes */}
                   <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,#f472b6,#f472b6_3px,transparent_3px,transparent_6px)] opacity-50" />
                 </div>
               </div>
@@ -123,14 +207,12 @@ export default function CakeSection() {
 
           {/* Bottom Cake Tier */}
           <div className="relative z-10 w-[240px] sm:w-[270px] h-[95px] bg-gradient-to-b from-[#ffb6c7] to-[#f4759c] rounded-t-3xl shadow-lg border-t-4 border-white/80 flex flex-col items-center justify-center overflow-hidden">
-            {/* Cream Piping / Pearl Garland */}
             <div className="absolute top-2 inset-x-2 flex justify-around text-[10px] text-white/90">
               <span>●</span><span>●</span><span>●</span><span>●</span><span>●</span><span>●</span><span>●</span><span>●</span><span>●</span>
             </div>
             <div className="text-white font-handwriting text-2xl font-bold tracking-wider drop-shadow-md">
               Happy Birthday 🎂
             </div>
-            {/* Sprinkles */}
             <div className="absolute bottom-2 inset-x-4 flex justify-between text-xs opacity-75">
               <span>✨</span><span>💖</span><span>🌸</span><span>💖</span><span>✨</span>
             </div>
@@ -143,40 +225,62 @@ export default function CakeSection() {
 
         {/* Interactive Controls & Status */}
         <div className="mt-8 flex flex-col items-center gap-4">
-          <p className="text-sm sm:text-base font-medium text-pink-700 transition-all duration-300">
-            {candlesLit ? personalization.cake.instructionBefore : personalization.cake.instructionAfter}
+          <p className="text-base sm:text-lg font-medium text-pink-700 transition-all duration-300">
+            {candlesLit
+              ? (personalization.cake?.instructionBefore || 'Tap the glowing candles to blow them out 💨')
+              : 'Your wish deserves to come true ✨'}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             {candlesLit ? (
-              <button
-                onClick={blowOutCandles}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-pink-500 hover:bg-pink-600 active:scale-95 text-white font-semibold rounded-full shadow-md shadow-pink-500/20 transition-all duration-200"
-              >
-                <Wind className="w-4 h-4" />
-                <span>Blow Out Candles 💨</span>
-              </button>
+              <>
+                <button
+                  onClick={blowOutCandles}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 active:scale-95 text-white font-semibold rounded-full shadow-md shadow-pink-500/20 transition-all duration-200 cursor-pointer"
+                >
+                  <Wind className="w-4 h-4" />
+                  <span>Blow Out Candles 💨</span>
+                </button>
+
+                {/* Optional Mic Blow Detection Toggle */}
+                <button
+                  onClick={isMicListening ? stopMicListening : startMicListening}
+                  className={`inline-flex items-center gap-2 px-4 py-3 rounded-full text-xs font-semibold border transition-all cursor-pointer ${
+                    isMicListening
+                      ? 'bg-rose-100 text-rose-700 border-rose-300 animate-pulse'
+                      : 'bg-white text-gray-700 border-pink-200 hover:bg-pink-50'
+                  }`}
+                  title="Enable microphone to blow candles by blowing on your mic"
+                >
+                  {isMicListening ? <Mic className="w-3.5 h-3.5 text-rose-600" /> : <MicOff className="w-3.5 h-3.5 text-gray-400" />}
+                  <span>{isMicListening ? 'Listening: Blow now! 🌬️' : 'Blow via Mic 🎙️'}</span>
+                </button>
+              </>
             ) : (
               <button
                 onClick={relightCandles}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-pink-300 hover:bg-pink-50 text-pink-600 font-semibold rounded-full shadow-sm transition-all duration-200 text-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-pink-300 hover:bg-pink-50 text-pink-600 font-semibold rounded-full shadow-sm transition-all duration-200 text-sm cursor-pointer"
               >
                 <Flame className="w-4 h-4 text-orange-500" />
                 <span>Relight Candles 🕯️</span>
               </button>
             )}
           </div>
+
+          {micError && (
+            <p className="text-xs text-rose-500 font-light mt-1">{micError}</p>
+          )}
         </div>
 
-        {/* Secret Wish Card (Appears after blowing out candles) */}
+        {/* Secret Wish Card (Revealed after candles blown out) */}
         {hasBlownOut && (
-          <div className="mt-10 max-w-md mx-auto romantic-glass rounded-2xl p-6 shadow-xl border border-pink-200/80 transition-all animate-float-slow">
-            <h3 className="text-lg font-semibold text-pink-800 flex items-center justify-center gap-2 mb-2">
-              <Sparkles className="w-4 h-4 text-pink-500" />
+          <div className="mt-10 max-w-md mx-auto romantic-glass rounded-3xl p-6 sm:p-8 shadow-2xl border border-pink-200/90 transition-all animate-fadeIn">
+            <h3 className="text-xl font-display font-bold text-pink-800 flex items-center justify-center gap-2 mb-2">
+              <Sparkles className="w-5 h-5 text-pink-500" />
               <span>Make Your Birthday Wish ✨</span>
             </h3>
-            <p className="text-xs text-gray-600 mb-4 font-light">
-              Type your secret wish below. Your wish will be safely locked in your heart!
+            <p className="text-xs text-gray-600 mb-4 font-light leading-relaxed">
+              Type your secret wish below. Your wish will be sealed forever with love!
             </p>
 
             <form onSubmit={saveWish} className="flex flex-col gap-3">
@@ -185,13 +289,13 @@ export default function CakeSection() {
                   type="text"
                   value={wishText}
                   onChange={(e) => setWishText(e.target.value)}
-                  placeholder={personalization.cake.secretWishPlaceholder}
-                  className="w-full px-4 py-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm bg-white/90 text-gray-800 placeholder-pink-300"
+                  placeholder={personalization.cake?.secretWishPlaceholder || 'Whisper your secret wish here...'}
+                  className="w-full px-4 py-3 rounded-2xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:border-transparent text-sm bg-white text-gray-800 placeholder-pink-300"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full py-2.5 bg-gradient-to-r from-pink-500 to-rose-400 hover:from-pink-600 hover:to-rose-500 text-white font-medium rounded-xl text-sm shadow-md transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 bg-gradient-to-r from-pink-500 to-rose-400 hover:from-pink-600 hover:to-rose-500 text-white font-medium rounded-2xl text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Heart className="w-4 h-4 fill-white" />
                 <span>Seal My Wish With Love 💌</span>
@@ -201,7 +305,7 @@ export default function CakeSection() {
             {wishSaved && (
               <div className="mt-3 text-xs text-emerald-600 font-medium flex items-center justify-center gap-1.5 animate-pulse">
                 <Check className="w-3.5 h-3.5" />
-                <span>{personalization.cake.wishSavedMessage}</span>
+                <span>{personalization.cake?.wishSavedMessage || 'Your wish has been sealed with love 💖'}</span>
               </div>
             )}
           </div>

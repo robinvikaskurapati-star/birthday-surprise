@@ -4,21 +4,43 @@ import { personalization } from '../data/personalization';
 
 export default function DaysCounter() {
   const [elapsed, setElapsed] = useState(null);
-  const anniversaryStr = personalization.dates.anniversaryDate;
+  const anniversaryStr = personalization.dates?.anniversaryDate;
 
   useEffect(() => {
-    if (!anniversaryStr || isNaN(Date.parse(anniversaryStr))) {
+    if (!anniversaryStr || typeof anniversaryStr !== 'string' || !anniversaryStr.trim()) {
+      setElapsed(null);
+      return;
+    }
+
+    // Parse date parts safely to avoid UTC/timezone off-by-one issues
+    const parts = anniversaryStr.trim().split('-');
+    if (parts.length < 3) {
+      setElapsed(null);
+      return;
+    }
+
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+
+    if (isNaN(year) || isNaN(month) || isNaN(day)) {
+      setElapsed(null);
+      return;
+    }
+
+    const startDate = new Date(year, month, day, 0, 0, 0);
+    if (isNaN(startDate.getTime())) {
+      setElapsed(null);
       return;
     }
 
     const calculateTime = () => {
-      const start = new Date(anniversaryStr).getTime();
-      const now = new Date().getTime();
-      const diff = Math.max(0, now - start);
+      const now = new Date();
+      const diff = Math.max(0, now.getTime() - startDate.getTime());
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
       setElapsed({ days, hours, minutes, seconds });
@@ -55,7 +77,7 @@ export default function DaysCounter() {
 
                 {/* Counter boxes */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-lg mx-auto">
-                  <div className="bg-white/90 rounded-2xl p-4 shadow-sm border border-pink-100 flex flex-col items-center">
+                  <div className="bg-white/95 rounded-2xl p-4 shadow-sm border border-pink-100 flex flex-col items-center">
                     <span className="text-3xl sm:text-4xl font-bold font-display text-pink-600">
                       {elapsed.days}
                     </span>
@@ -64,7 +86,7 @@ export default function DaysCounter() {
                     </span>
                   </div>
 
-                  <div className="bg-white/90 rounded-2xl p-4 shadow-sm border border-pink-100 flex flex-col items-center">
+                  <div className="bg-white/95 rounded-2xl p-4 shadow-sm border border-pink-100 flex flex-col items-center">
                     <span className="text-3xl sm:text-4xl font-bold font-display text-pink-600">
                       {elapsed.hours}
                     </span>
@@ -73,7 +95,7 @@ export default function DaysCounter() {
                     </span>
                   </div>
 
-                  <div className="bg-white/90 rounded-2xl p-4 shadow-sm border border-pink-100 flex flex-col items-center">
+                  <div className="bg-white/95 rounded-2xl p-4 shadow-sm border border-pink-100 flex flex-col items-center">
                     <span className="text-3xl sm:text-4xl font-bold font-display text-pink-600">
                       {elapsed.minutes}
                     </span>
@@ -82,7 +104,7 @@ export default function DaysCounter() {
                     </span>
                   </div>
 
-                  <div className="bg-white/90 rounded-2xl p-4 shadow-sm border border-pink-100 flex flex-col items-center">
+                  <div className="bg-white/95 rounded-2xl p-4 shadow-sm border border-pink-100 flex flex-col items-center">
                     <span className="text-3xl sm:text-4xl font-bold font-display text-pink-600 tabular-nums">
                       {elapsed.seconds}
                     </span>
@@ -100,11 +122,11 @@ export default function DaysCounter() {
               </div>
             ) : (
               <div className="py-4">
-                <p className="text-base sm:text-lg text-pink-700 font-handwriting text-2xl font-semibold mb-2">
-                  "Every single moment spent with you is timeless and forever precious." ⏳✨
+                <p className="text-base sm:text-xl text-pink-700 font-handwriting text-2xl sm:text-3xl font-semibold mb-2">
+                  "Every single moment spent with you is special, timeless and forever precious." ⏳✨
                 </p>
                 <p className="text-xs text-gray-500 max-w-sm mx-auto">
-                  (Tip: Enter your anniversary date in <code className="bg-pink-100 px-1.5 py-0.5 rounded text-pink-800 text-[11px]">src/data/personalization.js</code> to track elapsed days, hours, and seconds!)
+                  (Tip: Enter your anniversary date format 'YYYY-MM-DD' in <code className="bg-pink-100 px-1.5 py-0.5 rounded text-pink-800 text-[11px]">src/data/personalization.js</code> to track exact days together!)
                 </p>
               </div>
             )}

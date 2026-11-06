@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { HelpCircle, Award, RotateCcw, CheckCircle2, Heart, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { personalization } from '../data/personalization';
+import { soundEffects } from '../utils/soundEffects';
 
 export default function LoveQuizSection() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -9,16 +10,18 @@ export default function LoveQuizSection() {
   const [answers, setAnswers] = useState([]);
   const [isCompleted, setIsCompleted] = useState(false);
 
-  const quiz = personalization.quiz;
-  const questions = quiz.questions;
+  const quiz = personalization.quiz || {};
+  const questions = quiz.questions || [];
   const currentQ = questions[currentQuestionIndex];
 
   const handleSelectOption = (index) => {
+    soundEffects.playPop();
     setSelectedOption(index);
   };
 
   const handleNext = () => {
     if (selectedOption === null) return;
+    soundEffects.playPop();
 
     const newAnswers = [...answers, selectedOption];
     setAnswers(newAnswers);
@@ -28,11 +31,12 @@ export default function LoveQuizSection() {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       setIsCompleted(true);
+      soundEffects.playHeartOpenFlourish();
       // Confetti burst for quiz completion!
       try {
         confetti({
-          particleCount: 120,
-          spread: 70,
+          particleCount: 130,
+          spread: 75,
           origin: { y: 0.6 },
           colors: ['#f43f68', '#fbaac0', '#ffd166', '#a0c4ff'],
         });
@@ -41,25 +45,36 @@ export default function LoveQuizSection() {
   };
 
   const restartQuiz = () => {
+    soundEffects.playPop();
     setCurrentQuestionIndex(0);
     setSelectedOption(null);
     setAnswers([]);
     setIsCompleted(false);
   };
 
+  if (!questions.length) return null;
+
   return (
-    <section id="quiz" className="py-20 px-4 relative bg-[#fff9fa]">
-      <div className="max-w-2xl mx-auto text-center">
+    <section id="quiz" className="py-24 px-4 relative bg-[#fff9fa] overflow-hidden">
+      {/* Decorative floating game elements */}
+      <div className="absolute top-10 left-10 text-4xl select-none animate-float opacity-50 pointer-events-none">
+        🎮
+      </div>
+      <div className="absolute bottom-12 right-10 text-4xl select-none animate-float-slow opacity-50 pointer-events-none">
+        💖
+      </div>
+
+      <div className="max-w-2xl mx-auto text-center relative z-10">
         {/* Header */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100 text-pink-700 text-xs font-semibold uppercase tracking-wider mb-3">
           <HelpCircle className="w-3.5 h-3.5" />
           <span>Couple's Mini Game</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-display font-bold text-gray-900 mb-3">
-          {quiz.title}
+          {quiz.title || 'A Little Couple Quiz! 🎮💕'}
         </h2>
-        <p className="text-gray-600 max-w-md mx-auto text-base sm:text-lg font-light mb-10">
-          {quiz.subtitle}
+        <p className="text-gray-600 max-w-md mx-auto text-base sm:text-lg font-light mb-10 leading-relaxed">
+          {quiz.subtitle || 'Let’s test our cute memories together!'}
         </p>
 
         {/* Quiz Card */}
@@ -95,10 +110,10 @@ export default function LoveQuizSection() {
                     <button
                       key={i}
                       onClick={() => handleSelectOption(i)}
-                      className={`w-full text-left p-4 rounded-xl border text-sm sm:text-base font-medium transition-all duration-200 flex items-center justify-between ${
+                      className={`w-full text-left p-4 rounded-2xl border text-sm sm:text-base font-medium transition-all duration-200 flex items-center justify-between cursor-pointer ${
                         isSelected
-                          ? 'bg-pink-500 text-white border-pink-600 shadow-md transform scale-[1.01]'
-                          : 'bg-white hover:bg-pink-50/60 text-gray-700 border-pink-200'
+                          ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white border-pink-600 shadow-md transform scale-[1.01]'
+                          : 'bg-white hover:bg-pink-50/70 text-gray-700 border-pink-200'
                       }`}
                     >
                       <span>{opt}</span>
@@ -110,7 +125,7 @@ export default function LoveQuizSection() {
 
               {/* Reaction hint if selected */}
               {selectedOption !== null && currentQ.reaction && (
-                <div className="mb-6 p-3 rounded-xl bg-pink-50 border border-pink-200 text-xs text-pink-700 flex items-center gap-2 animate-fadeIn">
+                <div className="mb-6 p-4 rounded-2xl bg-pink-50 border border-pink-200 text-xs sm:text-sm text-pink-800 flex items-center gap-2.5 animate-fadeIn">
                   <Sparkles className="w-4 h-4 flex-shrink-0 text-pink-500" />
                   <span>{currentQ.reaction}</span>
                 </div>
@@ -139,23 +154,23 @@ export default function LoveQuizSection() {
               </div>
 
               <div className="inline-block px-4 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold uppercase tracking-wider mb-3">
-                {quiz.completion.badge}
+                {quiz.completion?.badge || '100% Soulmate Verified! 🏆💖'}
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-display font-bold text-gray-900 mb-3">
                 You Stole My Heart Completely! 💘
               </h3>
 
-              <p className="text-gray-600 max-w-md mx-auto text-base font-light mb-8">
-                {quiz.completion.message}
+              <p className="text-gray-600 max-w-md mx-auto text-base font-light mb-8 leading-relaxed">
+                {quiz.completion?.message || 'You scored a perfect match! You are officially my favorite person in the entire universe.'}
               </p>
 
               <button
                 onClick={restartQuiz}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-pink-300 text-pink-600 hover:bg-pink-50 font-semibold text-sm shadow-sm transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-pink-300 text-pink-600 hover:bg-pink-50 font-semibold text-sm shadow-sm transition-all cursor-pointer"
               >
                 <RotateCcw className="w-4 h-4" />
-                <span>{quiz.completion.restartButton}</span>
+                <span>{quiz.completion?.restartButton || 'Play Quiz Again 🔄'}</span>
               </button>
             </div>
           )}
