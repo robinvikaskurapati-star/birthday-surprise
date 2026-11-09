@@ -131,9 +131,9 @@ export const personalization = {
     },
     {
       id: 7,
-      title: 'Under The Starlit Sky 🌙',
-      caption: 'Holding your hand and knowing you are the most special soul in my life.',
-      date: 'Stargazing',
+      title: 'Prema puttina kothaloni visheshalu',
+      caption: `Alaa manam iddaram Hackathon lo okariki okaram help chesukuntu, enno moments ni happy gaa complete chesam ❤️\nAlage mana jeevithamlo enni ups and downs vachina okariki okaram thoduga nilabaduthu, mana bandhan ni inkaa strong chesukundham\nEnni atankulu edhuraina sare, okari cheyyi okaram eppatiki vadalakudadhu. Mana journey lo gelupaina, otamaina kalise edurukundham ❤️🫂`,
+      date: 'Together Forever',
       image: 'images/memories/photo8.jpeg',
       frameStyle: 'heart',
       aspect: 'aspect-square',
