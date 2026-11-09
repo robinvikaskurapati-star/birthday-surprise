@@ -66,7 +66,7 @@ export const personalization = {
     {
       id: 1,
       title: 'That Unforgettable Smile ✨',
-      caption: 'The smile that lights up my whole universe and melts away all my worries.',
+      caption: 'Ninnu chusi modhati saari premalo padda moment 💖',
       date: 'Pure Joy',
       image: 'images/memories/photo1.jpeg',
       frameStyle: 'polaroid',
