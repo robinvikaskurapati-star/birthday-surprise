@@ -120,9 +120,9 @@ export const personalization = {
     },
     {
       id: 6,
-      title: 'Heart to Heart Moments 💬',
-      caption: 'Minutes turn into hours, and I never want our conversations to end.',
-      date: 'Unbreakable Bond',
+      title: 'Mana kadhaki prarambhaniki nuv ichini sankethapu roju',
+      caption: `Aa tharvatha mellaga nuv naa ni manasulo mata chapesav  aa roju naa happiness ni maatallo cheppalenu Asalu naatho matladithe chaalu anukunna naaku, nuvve vachi nenu neeku ishtam ani cheppesariki naa aanandhaniki haddulu levu ❤️\nAa tharvatha naa birthday roju neeku propose chesaa Ala mana love journey official gaa start ayina roju naa birthday avvadam naaku eppatiki oka special memory 😘🧿`,
+      date: 'Our Love Story',
       image: 'images/memories/photo6.jpeg',
       frameStyle: 'polaroid',
       aspect: 'aspect-[16/10]',
