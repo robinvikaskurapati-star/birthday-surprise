@@ -98,9 +98,9 @@ export const personalization = {
     },
     {
       id: 4,
-      title: 'Breathtaking Beauty 👑',
-      caption: 'Among billions of people in this world, my heart and eyes only look for you.',
-      date: 'My Favorite View',
+      title: 'Ninnu chudalani pergina korika',
+      caption: `College holidays lo roju ninnu chudalane korika naalo peruguthu vachindhi entha try chesina kalavadam kudaraledhu\nKaani aa devudike mana iddarini kalapalani anipinchindemo Convocation day Kalisi chance vachindhi aa roju ninnu chusinappudu, 5 minutes alane ninnu chusthu undipoya\nAa roju neetho spend chesina aa konni nimishala aanandham mundhu inni rojula badhantha marchipoya Malli naa face lo smile vachindhi Bngrm ❤️🥹`,
+      date: 'Convocation Day',
       image: 'images/memories/photo4.jpeg',
       frameStyle: 'polaroid',
       aspect: 'aspect-[3/4]',          // Tailored for portrait photo
