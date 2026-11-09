@@ -293,13 +293,6 @@ export default function GallerySection() {
             );
           })}
         </div>
-
-        {/* Helpful instructions note for Robin */}
-        <div className="mt-12 text-center text-xs text-pink-600/70">
-          <p>
-            (Robin: Drop your photos into <code className="bg-white/80 px-1.5 py-0.5 rounded font-mono text-pink-800">public/images/memories/</code> and edit captions in <code className="bg-white/80 px-1.5 py-0.5 rounded font-mono text-pink-800">src/data/personalization.js</code>!)
-          </p>
-        </div>
       </div>
 
       {/* Lightbox Modal */}

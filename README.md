@@ -60,7 +60,7 @@ The website feels like opening a tiny magical world made especially for someone 
    - Interactive wax-sealed envelope.
    - Tap to break seal, open flap, slide out letter, and unfold.
    - Line-by-line reveal animation with sincere, warm birthday letter.
-   - Signature: *"Forever your person, Robin 💗"*.
+   - Signature: *"Forever your person, Dileep 💗"*.
 
 8. **Section H: Days Together Counter**:
    - Real-time ticking counter (Days, Hours, Minutes, Seconds) calculated safely without timezone off-by-one errors.
@@ -103,8 +103,8 @@ recipient: {
   nickname: 'Sweetheart',
 },
 sender: {
-  name: 'Robin',
-  signature: 'Forever your person, Robin 💗',
+  name: 'Dileep',
+  signature: 'Forever your person, Dileep 💗',
 }
 ```
 

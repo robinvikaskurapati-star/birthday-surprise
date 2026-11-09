@@ -4,8 +4,7 @@
  * ROMANTIC BIRTHDAY SURPRISE - PERSONALIZATION CONFIGURATION
  * ====================================================================
  * 
- * Welcome Robin! This is the ONE central file configured with love
- * for Siri Bngrm (Seethaa).
+ * Configured with love for Siri Bngrm (Seethaa) by Dileep.
  * 
  * ====================================================================
  */
@@ -16,11 +15,11 @@ export const personalization = {
   // ------------------------------------------------------------------
   security: {
     enabled: true,                   // Private lock enabled for privacy
-    passcode: 'siri',                // Secret code to unlock (also accepts 'bngrm', 'seethaa', 'love')
+    passcode: 'siri',                // Secret code to unlock (also accepts 'bngrm', 'seethaa', 'love', 'dileep')
     magicKey: 'bngrm',               // Private magic key for direct link: ?key=bngrm
-    hint: "Hint: Robin's sweet name for you 💖 (siri / bngrm)",
+    hint: "Hint: Dileep's sweet name for you 💖 (siri / bngrm)",
     lockedTitle: 'A Secret Surprise For Siri 🔐💖',
-    lockedSubtitle: 'This private digital world is crafted with love just for Robin\'s favorite person.',
+    lockedSubtitle: "This private digital world is crafted with love just for Dileep's favorite person.",
   },
 
   // ------------------------------------------------------------------
@@ -32,8 +31,8 @@ export const personalization = {
     specialName: 'Seethaa',           // Her affectionate nickname
   },
   sender: {
-    name: 'Robin',                    // Your name
-    signature: 'Forever your person, Robin 💗', // Signature for letter & final surprise
+    name: 'Dileep',                   // Your name
+    signature: 'Forever your person, Dileep 💗', // Signature for letter & final surprise
   },
 
   // ------------------------------------------------------------------
@@ -61,7 +60,7 @@ export const personalization = {
   // ------------------------------------------------------------------
   // 4. SECTION C: OUR MEMORIES INSIDE THE HEART (PHOTO GALLERY)
   // ------------------------------------------------------------------
-  // Configured with Robin's uploaded photos for Siri Bngrm!
+  // Configured with Dileep's uploaded photos for Siri Bngrm!
   // Frames and aspect ratios adjusted perfectly to match each photograph.
   gallery: [
     {
@@ -69,7 +68,7 @@ export const personalization = {
       title: 'That Unforgettable Smile ✨',
       caption: 'The smile that lights up my whole universe and melts away all my worries.',
       date: 'Pure Joy',
-      image: '/images/memories/photo1.jpeg',
+      image: 'images/memories/photo1.jpeg',
       frameStyle: 'polaroid',
       aspect: 'aspect-[16/10]',
       objectPosition: 'center 35%',
@@ -80,7 +79,7 @@ export const personalization = {
       title: 'Sweetest Memories With You 🌸',
       caption: 'Every place is magical and breathtaking as long as I am with you, Seethaa.',
       date: 'Cherished Days',
-      image: '/images/memories/photo2.jpeg',
+      image: 'images/memories/photo2.jpeg',
       frameStyle: 'rounded',
       aspect: 'aspect-[16/9]',
       objectPosition: 'center',
@@ -91,7 +90,7 @@ export const personalization = {
       title: 'Our Beautiful Happiness 💕',
       caption: 'My absolute favorite sound in the whole world is hearing you laugh, Bngrm.',
       date: 'Pure Happiness',
-      image: '/images/memories/photo3.jpeg',
+      image: 'images/memories/photo3.jpeg',
       frameStyle: 'polaroid',
       aspect: 'aspect-[16/10]',
       objectPosition: 'center',
@@ -102,7 +101,7 @@ export const personalization = {
       title: 'Breathtaking Beauty 👑',
       caption: 'Among billions of people in this world, my heart and eyes only look for you.',
       date: 'My Favorite View',
-      image: '/images/memories/photo4.jpeg',
+      image: 'images/memories/photo4.jpeg',
       frameStyle: 'polaroid',
       aspect: 'aspect-[3/4]',          // Tailored for portrait photo
       objectPosition: 'center top',
@@ -113,7 +112,7 @@ export const personalization = {
       title: 'Golden Moments Together 🌅',
       caption: 'Watching the day fade, but my heart is always glowing bright with you.',
       date: 'Sunsets & Love',
-      image: '/images/memories/photo5.jpeg',
+      image: 'images/memories/photo5.jpeg',
       frameStyle: 'rounded',
       aspect: 'aspect-[16/9]',
       objectPosition: 'center',
@@ -124,7 +123,7 @@ export const personalization = {
       title: 'Heart to Heart Moments 💬',
       caption: 'Minutes turn into hours, and I never want our conversations to end.',
       date: 'Unbreakable Bond',
-      image: '/images/memories/photo6.jpeg',
+      image: 'images/memories/photo6.jpeg',
       frameStyle: 'polaroid',
       aspect: 'aspect-[16/10]',
       objectPosition: 'center',
@@ -135,7 +134,7 @@ export const personalization = {
       title: 'Under The Starlit Sky 🌙',
       caption: 'Holding your hand and knowing you are the most special soul in my life.',
       date: 'Stargazing',
-      image: '/images/memories/photo8.jpeg',
+      image: 'images/memories/photo8.jpeg',
       frameStyle: 'heart',
       aspect: 'aspect-square',
       objectPosition: 'center',
@@ -146,7 +145,7 @@ export const personalization = {
       title: 'To All Our Tomorrows 🥂',
       caption: 'Here is to another year of loving you more deeply every single day, Siri Bngrm.',
       date: 'Forever & Always',
-      image: '/images/memories/photo9.jpeg',
+      image: 'images/memories/photo9.jpeg',
       frameStyle: 'rounded',
       aspect: 'aspect-[16/9]',
       objectPosition: 'center',
@@ -293,7 +292,7 @@ export const personalization = {
       'I may not have the perfect words to describe what you mean to me, but if I could make one wish today, it would be to see that beautiful smile of yours forever.',
     ],
     closing: 'Happy Birthday Seethaa ❤️✨ With all my heart and endless love,',
-    signature: 'Forever your person, Robin 💗',
+    signature: 'Forever your person, Dileep 💗',
   },
 
   // ------------------------------------------------------------------
@@ -359,9 +358,9 @@ export const personalization = {
   // 10. SECTION J: BACKGROUND MUSIC
   // ------------------------------------------------------------------
   music: {
-    audioSrc: '/audio/siri-song.mp3', // Robin's custom uploaded song!
+    audioSrc: '/audio/siri-song.mp3', // Custom uploaded song!
     title: 'Special Melody for Siri 🎶',
-    artist: 'With All My Love • Robin',
+    artist: 'With All My Love • Dileep',
   },
 
   // ------------------------------------------------------------------
@@ -372,7 +371,7 @@ export const personalization = {
     title: 'Happy Birthday, Seethaa! 👑🎂💗',
     message: "Among billions of people in this world, my heart found its favourite person in you. You're not just a chapter in my life; you're the beautiful story I never want to end.",
     subMessage: 'Every heartbeat carries a little piece of you, and if I could make one wish today, it would be to see that beautiful smile of yours forever. Happy Birthday, Siri Bngrm ❤️✨',
-    signature: 'Forever your person, Robin.',
+    signature: 'Forever your person, Dileep.',
     replayButton: 'Start Our Little Story Again 🌸',
   },
 };

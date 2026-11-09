@@ -1,6 +1,6 @@
 # 📸 How to Add Your Real Photos
 
-Welcome Robin! Here is the simple guide to replacing the placeholder memory illustrations with your actual couple photographs:
+Here is the simple guide to replacing the placeholder memory illustrations with your actual couple photographs:
 
 ### 1. Place Your Photos Here
 Drop your image files (JPG, PNG, or WEBP) into this folder:

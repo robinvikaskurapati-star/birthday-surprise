@@ -116,10 +116,10 @@ export default function FinalSurpriseSection({ onReplay }) {
               )}
             </div>
 
-            {/* Robin's Signature */}
+            {/* Dileep's Signature */}
             <div className="mt-8 pt-6 border-t border-pink-200/80">
               <p className="font-handwriting text-3xl sm:text-4xl font-bold text-romantic-700">
-                {surprise.signature || 'Forever your person, Robin.'}
+                {surprise.signature || 'Forever your person, Dileep.'}
               </p>
             </div>
 

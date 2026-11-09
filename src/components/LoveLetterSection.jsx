@@ -128,7 +128,7 @@ export default function LoveLetterSection() {
                   {letterData.closing || 'With all my heart and love,'}
                 </p>
                 <p className="font-handwriting text-3xl sm:text-4xl font-bold text-romantic-600 mt-2">
-                  {letterData.signature || 'Forever your person, Robin 💗'}
+                  {letterData.signature || 'Forever your person, Dileep 💗'}
                 </p>
               </div>
 

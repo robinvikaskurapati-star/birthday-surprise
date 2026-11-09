@@ -24,7 +24,7 @@ export default function Footer({ onReplay }) {
 
         <p className="text-sm font-medium text-gray-700">
           Handcrafted with endless love by{' '}
-          <span className="font-bold text-pink-600">{personalization.sender?.name || 'Robin'}</span> for{' '}
+          <span className="font-bold text-pink-600">{personalization.sender?.name || 'Dileep'}</span> for{' '}
           <span className="font-bold text-pink-600">{personalization.recipient?.name || 'My Sweetheart'}</span>
         </p>
 

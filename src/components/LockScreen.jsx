@@ -19,6 +19,7 @@ export default function LockScreen({ onUnlock }) {
       'bngrm',
       'seethaa',
       'love',
+      'dileep',
       (security.passcode || 'siri').trim().toLowerCase(),
       (security.magicKey || 'bngrm').trim().toLowerCase(),
     ];
@@ -66,7 +67,7 @@ export default function LockScreen({ onUnlock }) {
 
         {/* Subtitle */}
         <p className="text-sm text-gray-600 font-light leading-relaxed mb-6">
-          {security.lockedSubtitle || "This private digital love letter is locked just for Robin's favorite person."}
+          {security.lockedSubtitle || "This private digital love letter is locked just for Dileep's favorite person."}
         </p>
 
         {/* Form */}
@@ -111,7 +112,7 @@ export default function LockScreen({ onUnlock }) {
           </button>
           {showHint && (
             <p className="text-xs text-pink-700 mt-2 bg-pink-50 px-3 py-1.5 rounded-xl border border-pink-200/80 animate-fadeIn font-light">
-              {security.hint || "Hint: Robin's sweet name for you 💖 (siri / bngrm)"}
+              {security.hint || "Hint: Dileep's sweet name for you 💖 (siri / bngrm)"}
             </p>
           )}
         </div>
