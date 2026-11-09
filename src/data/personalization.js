@@ -81,8 +81,8 @@ export const personalization = {
       date: 'First Picture',
       image: 'images/memories/photo2.jpeg',
       frameStyle: 'rounded',
-      aspect: 'aspect-[16/9]',
-      objectPosition: 'center',
+      aspect: 'aspect-[3/4]',
+      objectPosition: 'center 40%',
       rotation: 'rotate-2',
     },
     {
