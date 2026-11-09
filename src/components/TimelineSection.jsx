@@ -41,7 +41,7 @@ export default function TimelineSection() {
             <span>Our Journey</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-display font-bold text-gray-900 mb-3">
-            Our Love Story Timeline 📖💗
+            Our Story — Six Chapters of Us ❤️
           </h2>
           <p className="text-gray-600 max-w-lg mx-auto text-base sm:text-lg font-light leading-relaxed">
             Every step, every laugh, and every quiet moment that brought us closer together.
@@ -107,6 +107,18 @@ export default function TimelineSection() {
                 </div>
               );
             })}
+          </div>
+        </div>
+
+        {/* Closing Love Story Callout */}
+        <div className="mt-14 text-center">
+          <div className="inline-block romantic-glass px-8 py-6 rounded-3xl border border-pink-200/90 shadow-lg max-w-xl mx-auto">
+            <p className="font-handwriting text-2xl sm:text-3xl font-bold text-rose-600 mb-2">
+              And that's how our forever began… ❤️
+            </p>
+            <p className="text-sm sm:text-base text-gray-700 font-light leading-relaxed">
+              Our story doesn't end here. It's just the beginning of our forever.
+            </p>
           </div>
         </div>
       </div>
