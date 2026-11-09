@@ -70,8 +70,8 @@ export const personalization = {
       date: 'Pure Joy',
       image: 'images/memories/photo1.jpeg',
       frameStyle: 'polaroid',
-      aspect: 'aspect-[16/10]',
-      objectPosition: 'center 35%',
+      aspect: 'aspect-[4/5] sm:aspect-[3/4]',
+      objectPosition: 'center 45%',
       rotation: '-rotate-2',
     },
     {

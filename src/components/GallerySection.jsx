@@ -154,7 +154,7 @@ export default function GallerySection() {
 
               <div className="flex flex-col sm:flex-row items-center gap-6">
                 {/* Central Photo */}
-                <div className="w-full sm:w-1/2 aspect-[16/10] rounded-2xl overflow-hidden shadow-inner bg-pink-50 relative">
+                <div className="w-full sm:w-1/2 aspect-[4/5] sm:aspect-[3/4] max-h-[440px] rounded-2xl overflow-hidden shadow-inner bg-pink-50 relative flex items-center justify-center">
                   {renderPhotoImg(galleryItems[0])}
                   <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[10px] font-bold text-pink-600 shadow-sm flex items-center gap-1">
                     <Sparkles className="w-3 h-3 text-pink-500" />
