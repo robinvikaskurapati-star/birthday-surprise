@@ -284,14 +284,21 @@ export const personalization = {
   // ------------------------------------------------------------------
   loveLetter: {
     envelopePrompt: 'A Sealed Letter For Siri 💌 (Tap to Open)',
-    salutation: 'My Dearest Siri Bngrm (Seethaa),',
+    salutation: 'To My Bangaram ❤️ (Dear Siri),',
     paragraphs: [
-      'Among billions of people in this world, my heart found its favourite person in you.',
-      "You're not just a chapter in my life; you're the beautiful story I never want to end.",
-      'Every heartbeat carries a little piece of you, every memory with you is my favourite, and every tomorrow feels special because I get to imagine you in it.',
-      'I may not have the perfect words to describe what you mean to me, but if I could make one wish today, it would be to see that beautiful smile of yours forever.',
+      'Mana story oka simple “Hi” tho start ayyindhi… March 24 na ninnu first time matladina aa moment nunchi, nuvvu naa life lo entha special ayipoyavo naake teliyaledhu.',
+      'Blue dress lo ninnu first time chusinappudu kaligina feeling, nee kosam class daggariki ravatam, nee smile kosam wait cheyyadam, nee voice and songs vinadam… ivanni ippatiki naa favourite memories.',
+      'Mana first conversations, Cultural Day lo nee singing, Medaram lo nee kosam photos theeyadam, Sipzy ane mana dream, nuvvu ichina bangle, first time naa pakkana kurchoni lunch cheyyadam… prathi memory naa heart lo special place lo undhi.',
+      'Hyderabad trip lo bus lo naa pakkana kurchunnappudu, Yadagirigutta lo kalisi darshanam chesinappudu, manam digina selfies… aa moments ni enni sarlu gurthuchesukunna bore kottadhu.',
+      'Naa life lo problems vachinappudu, nenu baadha lo unnappudu nuvvu cheppina “Em kaadhu… antha set aipothundhi” ane words naaku entho dhairyam ichayi.',
+      'Konni misunderstandings, silly fights, distance vachina… nee meedha naakunna affection maatram thaggaledhu. 37 days tharvatha June 9 na ninnu malli chusinappudu kaligina happiness ni words lo cheppalenu.',
+      'Bangaram, naaku nee nunchi perfect love story avasaram ledhu. Manam okarinokaram understand chesukuntu, mana dreams achieve chesthu, chinna chinna moments ni lifetime memories ga marchukovali.',
+      'Nuvvu naa smile ki reason, naa bad days lo comfort, naa dreams lo oka important part.',
+      'Life lo enni changes vachina, mana story lo inka beautiful chapters rayalani korukuntunna.',
+      "I don't know what tomorrow holds, but one thing is sure…",
+      'I will choose you, again and again, in every chapter of my life. ❤️',
     ],
-    closing: 'Happy Birthday Seethaa ❤️✨ With all my heart and endless love,',
+    closing: 'Forever with love, Bangaram ❤️',
     signature: 'Forever your person, Dileep 💗',
   },
 
@@ -369,9 +376,9 @@ export const personalization = {
   finalSurprise: {
     buttonPrompt: 'One Last Surprise 💌',
     title: 'Happy Birthday, Seethaa! 👑🎂💗',
-    message: "Among billions of people in this world, my heart found its favourite person in you. You're not just a chapter in my life; you're the beautiful story I never want to end.",
-    subMessage: 'Every heartbeat carries a little piece of you, and if I could make one wish today, it would be to see that beautiful smile of yours forever. Happy Birthday, Siri Bngrm ❤️✨',
-    signature: 'Forever your person, Dileep.',
+    message: "I will choose you, again and again, in every chapter of my life. ❤️",
+    subMessage: 'Nuvvu naa smile ki reason, naa bad days lo comfort, naa dreams lo oka important part. Happy Birthday, Siri Bngrm ❤️✨',
+    signature: 'Forever your person, Dileep 💗',
     replayButton: 'Start Our Little Story Again 🌸',
   },
 };
