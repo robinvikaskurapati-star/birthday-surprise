@@ -142,9 +142,9 @@ export const personalization = {
     },
     {
       id: 8,
-      title: 'To All Our Tomorrows 🥂',
-      caption: 'Here is to another year of loving you more deeply every single day, Siri Bngrm.',
-      date: 'Forever & Always',
+      title: 'Manalni manam ennadu veedukovadhu',
+      caption: `Appati nunchi okate lakshyam… elaagaina ninnu pelli chesukovali, enni kashtalu vachina mana intlo vallani oppinchali ❤️ Anduke daily 2–3 varaku startup meedha work chesthu, neeku naa progress report isthu, manamiddaram mana careers meedha focus chesthunnam\nAlaage college lo Traditional day roju Ammu ki mana relationship parichayam cheddam ani thanani teesukochi, mana matter cheppesaa. Aa roju manam andharam kalisi entha happy ga unnam kadhaa! ❤️🥹`,
+      date: 'Forever & Beyond',
       image: 'images/memories/photo9.jpeg',
       frameStyle: 'rounded',
       aspect: 'aspect-[16/9]',
