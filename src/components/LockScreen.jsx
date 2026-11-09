@@ -15,13 +15,9 @@ export default function LockScreen({ onUnlock }) {
     e.preventDefault();
     const cleanInput = inputVal.trim().toLowerCase();
     const validCodes = [
-      'siri',
-      'bngrm',
-      'seethaa',
-      'love',
-      'dileep',
-      (security.passcode || 'siri').trim().toLowerCase(),
-      (security.magicKey || 'bngrm').trim().toLowerCase(),
+      '891011',
+      (security.passcode || '891011').trim().toLowerCase(),
+      (security.magicKey || '891011').trim().toLowerCase(),
     ];
 
     if (validCodes.includes(cleanInput)) {
@@ -77,7 +73,7 @@ export default function LockScreen({ onUnlock }) {
               type="text"
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
-              placeholder="Enter secret code (e.g. siri)..."
+              placeholder="Enter 6-digit passcode..."
               className={`w-full px-5 py-3.5 rounded-2xl border bg-white text-center text-gray-800 placeholder-pink-300 font-medium tracking-wider focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all text-base ${
                 errorShake ? 'border-red-400 bg-red-50/50 animate-shake' : 'border-pink-200 shadow-inner'
               }`}

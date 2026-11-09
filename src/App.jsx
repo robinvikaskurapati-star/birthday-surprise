@@ -40,13 +40,11 @@ export default function App() {
       const urlParams = new URLSearchParams(window.location.search);
       const keyParam = (urlParams.get('key') || urlParams.get('pass') || '').trim().toLowerCase();
       const validMagicKeys = [
+        '891011',
         'bngrm',
         'siri',
-        'seethaa',
-        'love',
-        'surprise',
-        (security.magicKey || 'bngrm').toLowerCase(),
-        (security.passcode || 'siri').toLowerCase(),
+        (security.magicKey || '891011').toLowerCase(),
+        (security.passcode || '891011').toLowerCase(),
       ];
 
       if (keyParam && validMagicKeys.includes(keyParam)) {

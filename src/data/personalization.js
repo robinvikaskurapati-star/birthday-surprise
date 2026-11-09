@@ -15,9 +15,9 @@ export const personalization = {
   // ------------------------------------------------------------------
   security: {
     enabled: true,                   // Private lock enabled for privacy
-    passcode: 'siri',                // Secret code to unlock (also accepts 'bngrm', 'seethaa', 'love', 'dileep')
-    magicKey: 'bngrm',               // Private magic key for direct link: ?key=bngrm
-    hint: "Hint: Dileep's sweet name for you 💖 (siri / bngrm)",
+    passcode: '891011',              // Secret code to unlock
+    magicKey: '891011',              // Private magic key for direct link: ?key=891011
+    hint: 'SIX DIGIT NUMBER IF YOU NEED A HINT',
     lockedTitle: 'A Secret Surprise For Siri 🔐💖',
     lockedSubtitle: "This private digital world is crafted with love just for Dileep's favorite person.",
   },
