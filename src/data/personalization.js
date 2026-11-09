@@ -65,8 +65,8 @@ export const personalization = {
   gallery: [
     {
       id: 1,
-      title: 'That Unforgettable Smile ✨',
-      caption: 'Ninnu chusi modhati saari premalo padda moment 💖',
+      title: 'Ninnu chusi modhati saari premalo padda moment ✨',
+      caption: 'Ninnu modatisari chusina kshaname naa manasu nee daggara aagipoyindhi maa  Ee Prema vadhu em vadhu  anukunna time lo entry ichav Appudu nuvvu oka andamaina parichayam maatram kaani ee roju naa jeevithantham naatho undalani korukune naa sarvaswanni ayyav ❤️🥹',
       date: 'Pure Joy',
       image: 'images/memories/photo1.jpeg',
       frameStyle: 'polaroid',
