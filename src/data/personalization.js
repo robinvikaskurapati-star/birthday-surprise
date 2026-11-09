@@ -87,9 +87,9 @@ export const personalization = {
     },
     {
       id: 3,
-      title: 'Our Beautiful Happiness 💕',
-      caption: 'My absolute favorite sound in the whole world is hearing you laugh, Bngrm.',
-      date: 'Pure Happiness',
+      title: 'maniddari madya peruguthunna bandham',
+      caption: `Alaa manaki teliyakundane mana bandham roju rojuki balapaduthu vachindhi Oka roju anukokunda iddaram pakkapakkana kurchuni, rojantha kalisi time spend chesam\nAa roje manam iddaram kalisi modatisari Lakshmi Narasimha Swamy vari darshanam chesukunnam Aa tharvatha mana iddari kalayikaki gurthuga ee first memory ni capture chesukunnam\nAppatiki manaki teliyadu ee chinna kshanale mana jeevithamlo intha pedda memories avuthayani 🫠😍`,
+      date: 'Pure Bond',
       image: 'images/memories/photo3.jpeg',
       frameStyle: 'polaroid',
       aspect: 'aspect-[16/10]',
