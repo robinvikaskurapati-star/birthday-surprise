@@ -76,9 +76,9 @@ export const personalization = {
     },
     {
       id: 2,
-      title: 'Sweetest Memories With You 🌸',
-      caption: 'Every place is magical and breathtaking as long as I am with you, Seethaa.',
-      date: 'Cherished Days',
+      title: 'Neekosam vethiki nen chesina konni panulu',
+      caption: `Ninnu chudalane chinna thapanatho nee kosam Music Club Editor gaa join ayya ❤️\nAlaa aina ninnu daggara nunchi chudochu, neetho matladochu ani nee kosam vasthu unde vadini\nAppatlo manaki teliyadu aa chinna chinna moments okaroju mana life lo intha beautiful memories avuthayani\nIdhigo… manaki teliyakundane kalisi digina mana first memories lo oka picture 🧿❤️`,
+      date: 'First Picture',
       image: 'images/memories/photo2.jpeg',
       frameStyle: 'rounded',
       aspect: 'aspect-[16/9]',

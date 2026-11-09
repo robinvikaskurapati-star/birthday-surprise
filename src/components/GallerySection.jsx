@@ -170,7 +170,7 @@ export default function GallerySection() {
                   <h3 className="text-2xl font-display font-bold text-gray-800 group-hover:text-pink-600 transition-colors mt-1 mb-2">
                     {galleryItems[0].title}
                   </h3>
-                  <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
+                  <p className="text-sm text-gray-600 font-light leading-relaxed mb-4 whitespace-pre-line">
                     {galleryItems[0].caption}
                   </p>
                   <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-pink-600 group-hover:translate-x-1 transition-transform">
@@ -360,7 +360,7 @@ export default function GallerySection() {
               <h3 className="font-display font-bold text-gray-900 text-xl sm:text-2xl mb-1">
                 {galleryItems[selectedImageIndex].title}
               </h3>
-              <p className="text-sm text-gray-600 font-light leading-relaxed max-w-md mx-auto">
+              <p className="text-sm text-gray-600 font-light leading-relaxed max-w-md mx-auto whitespace-pre-line">
                 {galleryItems[selectedImageIndex].caption}
               </p>
             </div>
